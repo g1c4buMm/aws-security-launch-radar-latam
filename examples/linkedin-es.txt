@@ -1,0 +1,37 @@
+🛡️ 𝗥𝗮𝗱𝗮𝗿 𝗦𝗲𝗺𝗮𝗻𝗮𝗹 𝗱𝗲 𝗦𝗲𝗴𝘂𝗿𝗶𝗱𝗮𝗱 𝗔𝗪𝗦
+📅 Semana del 2026-09-30 al 2026-10-07
+
+Semana con varias CVEs en herramientas de IA y avances prácticos en detección: GuardDuty por política de la organización y remediación agrupada en Security Hub.
+
+🚀 𝗗𝗲𝘀𝘁𝗮𝗰𝗮𝗱𝗼𝘀:
+
+🟠 𝗔𝗪𝗦 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗛𝘂𝗯 𝗶𝗻𝘁𝗿𝗼𝗱𝘂𝗰𝗲𝘀 𝗿𝗲𝗺𝗲𝗱𝗶𝗮𝘁𝗶𝗼𝗻 𝗽𝗹𝗮𝗻𝘀 𝘁𝗼 𝗽𝗿𝗶𝗼𝗿𝗶𝘁𝗶𝘇𝗲 𝗮𝗻𝗱 𝗳𝗶𝘅 𝘀𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗲𝘅𝗽𝗼𝘀𝘂𝗿𝗲𝘀
+Los planes de remediación agrupan hallazgos de exposición por causa raíz: una sola corrección puede cerrar varias exposiciones.
+
+🟠 𝗔𝗺𝗮𝘇𝗼𝗻 𝗚𝘂𝗮𝗿𝗱𝗗𝘂𝘁𝘆 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗰𝗲𝗻𝘁𝗿𝗮𝗹𝗶𝘇𝗲𝗱 𝗺𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 𝘂𝘀𝗶𝗻𝗴 𝗔𝗪𝗦 𝗢𝗿𝗴𝗮𝗻𝗶𝘇𝗮𝘁𝗶𝗼𝗻𝘀 𝗱𝗲𝗰𝗹𝗮𝗿𝗮𝘁𝗶𝘃𝗲 𝗽𝗼𝗹𝗶𝗰𝗶𝗲𝘀
+GuardDuty ahora se puede habilitar con una política declarativa de AWS Organizations, que cubre cuentas existentes y nuevas sin automatización propia.
+
+🟠 𝗚𝘂𝗮𝗿𝗱𝗗𝘂𝘁𝘆 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 𝗠𝗼𝗻𝗶𝘁𝗼𝗿𝗶𝗻𝗴 𝗶𝘀 𝗻𝗼𝘄 𝗶𝗻𝗰𝗹𝘂𝗱𝗲𝗱 𝗶𝗻 𝘁𝗵𝗲 𝗔𝗪𝗦 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗛𝘂𝗯 𝗧𝗵𝗿𝗲𝗮𝘁 𝗔𝗻𝗮𝗹𝘆𝘁𝗶𝗰𝘀 𝗽𝗹𝗮𝗻
+Runtime Monitoring ahora forma parte del plan Threat Analytics de Security Hub, sin cargo separado de GuardDuty donde Security Hub está activo.
+
+🟠 𝗔𝗪𝗦 𝗖𝗼𝗻𝘁𝗶𝗻𝘂𝘂𝗺 𝗳𝗼𝗿 𝗣𝗲𝗻𝗲𝘁𝗿𝗮𝘁𝗶𝗼𝗻 𝗧𝗲𝘀𝘁𝗶𝗻𝗴 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗼𝘂𝘀 𝗽𝗲𝗻𝗲𝘁𝗿𝗮𝘁𝗶𝗼𝗻 𝘁𝗲𝘀𝘁𝗶𝗻𝗴 𝗶𝗻𝘁𝗲𝗴𝗿𝗮𝘁𝗲𝗱 𝗱𝗶𝗿𝗲𝗰𝘁𝗹𝘆 𝗶𝗻𝘁𝗼 𝘆𝗼𝘂𝗿 𝗖𝗜/𝗖𝗗 𝗽𝗶𝗽𝗲𝗹𝗶𝗻𝗲
+AWS Continuum puede ejecutar pruebas de penetración dentro del pipeline de CI/CD (vista previa pública), pasando de pruebas anuales a cada cambio.
+
+⚪ 𝗔𝗪𝗦 𝗣𝗿𝗶𝘃𝗮𝘁𝗲 𝗖𝗔 𝗻𝗼𝘄 𝗽𝗿𝗼𝘃𝗶𝗱𝗲𝘀 𝗱𝗲𝘁𝗮𝗶𝗹𝗲𝗱 𝗰𝗲𝗿𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗲 𝗶𝘀𝘀𝘂𝗮𝗻𝗰𝗲 𝗹𝗼𝗴𝘀
+Private CA ahora registra en CloudTrail cada certificado emitido, con contenido, CA emisora y solicitante.
+
+⚪ 𝗔𝗪𝗦 𝗜𝗔𝗠 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗖𝗲𝗻𝘁𝗲𝗿 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗻𝗲𝘁𝘄𝗼𝗿𝗸 𝗮𝗰𝗰𝗲𝘀𝘀 𝗰𝗼𝗻𝘁𝗿𝗼𝗹𝘀 𝗳𝗼𝗿 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗦𝘁𝗼𝗿𝗲
+Ahora se puede restringir por red de origen el acceso a las APIs de Identity Store y SCIM, cerrando un camino para cambiar usuarios y grupos desde fuera de la red.
+
+🧩 𝗖𝗩𝗘𝘀 𝗻𝘂𝗲𝘃𝗮𝘀 𝗽𝗮𝗿𝗮 𝗿𝗲𝘃𝗶𝘀𝗮𝗿:
+• CVE-2026-105811: Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnABot on AWS
+• CVE-2026-105812, CVE-2026-106032: Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF
+• CVE-2026-104019: OS command injection in the Studio Space startup script in Amazon SageMaker Distribution
+…y 4 más en el informe completo.
+
+📌 𝗧𝗮𝗺𝗯𝗶é𝗻 𝘀𝗮𝗹𝗶ó:
+6 novedades más y 1 publicación de blog en el informe completo.
+
+💬 ¿Los toolkits de agentes de IA ya están en tu proceso de parches, o todavía quedan fuera?
+
+#AWS #SeguridadEnLaNube #AWSSecurity #CVE #Ciberseguridad

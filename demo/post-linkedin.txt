@@ -1,0 +1,24 @@
+🚀 Launching: AWS Security Weekly Radar
+
+Every Monday, one short read with what changed in AWS security last week. The week of September 30 had 51 security items, including 7 new security bulletins and 19 updates to older ones. Nobody has time to read all of that, so I built a Claude Code skill that reads it for you.
+
+🌎 Your language:
+English, Português or Español. You choose at setup, and the whole report arrives in that language.
+
+🧭 What lands in your inbox and Slack:
+• The headline of the week
+• 3 to 7 highlights, each with priority, why it matters and one suggested action
+• Also released: the rest of the relevant news, split into News and Blog posts
+• Good to know: every new CVE and security bulletin in one compact table
+
+🛡️ Trust by design:
+The agent chooses and explains. Scripts guarantee the facts. Titles, dates and links come only from official AWS sources, and a validator blocks the send if anything does not match.
+
+🗺️ What comes next:
+Monthly, quarterly and YTD views in January. Kiro support in February. Personas and service filters in March. LGPD, BACEN and PCI DSS mapping in May, after legal review.
+
+Open source under MIT-0. Link in the comments.
+
+What should a weekly security radar tell you first?
+
+#AWS #CloudSecurity #LATAM #ClaudeCode #AgenticAI #SecurityEngineering

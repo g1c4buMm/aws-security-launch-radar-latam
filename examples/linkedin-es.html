@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LinkedIn Post Preview</title>
+<style>
+:root{--bg:#f4f2ee;--card:#fff;--ink:#1c1916;--muted:#6b635b;--line:#e2ddd7;--accent:#b9561c}
+@media (prefers-color-scheme:dark){:root{--bg:#13110f;--card:#1d1a17;--ink:#ede7e0;--muted:#a59c92;--line:#332e29;--accent:#ef7d3c}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:24px 16px 48px;display:grid;gap:16px}
+h1{font-size:18px;margin:0}.sub{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.post{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font:inherit}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button{font:600 14px -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;border-radius:999px;padding:9px 16px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:#fff}
+button.alt{background:transparent;color:var(--accent)}
+.count{font:13px ui-monospace,Menlo,monospace;color:var(--muted)}.ok{color:#2f7d55}.bad{color:#b42318}
+.links{white-space:pre-wrap;overflow-wrap:anywhere;font:13px ui-monospace,Menlo,monospace;color:var(--muted);margin:0}
+</style></head><body><div class="wrap">
+<div><h1>LinkedIn · Radar Semanal de Seguridad AWS</h1><p class="sub">Semana del 2026-09-30 al 2026-10-07. Pega la publicación y luego pega los enlaces como primer comentario.</p></div>
+<div class="row"><button type="button" data-copy="post">Copiar publicación</button><button type="button" class="alt" data-copy="links">Copiar enlaces para el primer comentario</button>
+<span class="count" id="count"></span></div>
+<div class="card"><pre class="post" id="post">🛡️ 𝗥𝗮𝗱𝗮𝗿 𝗦𝗲𝗺𝗮𝗻𝗮𝗹 𝗱𝗲 𝗦𝗲𝗴𝘂𝗿𝗶𝗱𝗮𝗱 𝗔𝗪𝗦
+📅 Semana del 2026-09-30 al 2026-10-07
+
+Semana con varias CVEs en herramientas de IA y avances prácticos en detección: GuardDuty por política de la organización y remediación agrupada en Security Hub.
+
+🚀 𝗗𝗲𝘀𝘁𝗮𝗰𝗮𝗱𝗼𝘀:
+
+🟠 𝗔𝗪𝗦 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗛𝘂𝗯 𝗶𝗻𝘁𝗿𝗼𝗱𝘂𝗰𝗲𝘀 𝗿𝗲𝗺𝗲𝗱𝗶𝗮𝘁𝗶𝗼𝗻 𝗽𝗹𝗮𝗻𝘀 𝘁𝗼 𝗽𝗿𝗶𝗼𝗿𝗶𝘁𝗶𝘇𝗲 𝗮𝗻𝗱 𝗳𝗶𝘅 𝘀𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗲𝘅𝗽𝗼𝘀𝘂𝗿𝗲𝘀
+Los planes de remediación agrupan hallazgos de exposición por causa raíz: una sola corrección puede cerrar varias exposiciones.
+
+🟠 𝗔𝗺𝗮𝘇𝗼𝗻 𝗚𝘂𝗮𝗿𝗱𝗗𝘂𝘁𝘆 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗰𝗲𝗻𝘁𝗿𝗮𝗹𝗶𝘇𝗲𝗱 𝗺𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 𝘂𝘀𝗶𝗻𝗴 𝗔𝗪𝗦 𝗢𝗿𝗴𝗮𝗻𝗶𝘇𝗮𝘁𝗶𝗼𝗻𝘀 𝗱𝗲𝗰𝗹𝗮𝗿𝗮𝘁𝗶𝘃𝗲 𝗽𝗼𝗹𝗶𝗰𝗶𝗲𝘀
+GuardDuty ahora se puede habilitar con una política declarativa de AWS Organizations, que cubre cuentas existentes y nuevas sin automatización propia.
+
+🟠 𝗚𝘂𝗮𝗿𝗱𝗗𝘂𝘁𝘆 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 𝗠𝗼𝗻𝗶𝘁𝗼𝗿𝗶𝗻𝗴 𝗶𝘀 𝗻𝗼𝘄 𝗶𝗻𝗰𝗹𝘂𝗱𝗲𝗱 𝗶𝗻 𝘁𝗵𝗲 𝗔𝗪𝗦 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗛𝘂𝗯 𝗧𝗵𝗿𝗲𝗮𝘁 𝗔𝗻𝗮𝗹𝘆𝘁𝗶𝗰𝘀 𝗽𝗹𝗮𝗻
+Runtime Monitoring ahora forma parte del plan Threat Analytics de Security Hub, sin cargo separado de GuardDuty donde Security Hub está activo.
+
+🟠 𝗔𝗪𝗦 𝗖𝗼𝗻𝘁𝗶𝗻𝘂𝘂𝗺 𝗳𝗼𝗿 𝗣𝗲𝗻𝗲𝘁𝗿𝗮𝘁𝗶𝗼𝗻 𝗧𝗲𝘀𝘁𝗶𝗻𝗴 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗼𝘂𝘀 𝗽𝗲𝗻𝗲𝘁𝗿𝗮𝘁𝗶𝗼𝗻 𝘁𝗲𝘀𝘁𝗶𝗻𝗴 𝗶𝗻𝘁𝗲𝗴𝗿𝗮𝘁𝗲𝗱 𝗱𝗶𝗿𝗲𝗰𝘁𝗹𝘆 𝗶𝗻𝘁𝗼 𝘆𝗼𝘂𝗿 𝗖𝗜/𝗖𝗗 𝗽𝗶𝗽𝗲𝗹𝗶𝗻𝗲
+AWS Continuum puede ejecutar pruebas de penetración dentro del pipeline de CI/CD (vista previa pública), pasando de pruebas anuales a cada cambio.
+
+⚪ 𝗔𝗪𝗦 𝗣𝗿𝗶𝘃𝗮𝘁𝗲 𝗖𝗔 𝗻𝗼𝘄 𝗽𝗿𝗼𝘃𝗶𝗱𝗲𝘀 𝗱𝗲𝘁𝗮𝗶𝗹𝗲𝗱 𝗰𝗲𝗿𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗲 𝗶𝘀𝘀𝘂𝗮𝗻𝗰𝗲 𝗹𝗼𝗴𝘀
+Private CA ahora registra en CloudTrail cada certificado emitido, con contenido, CA emisora y solicitante.
+
+⚪ 𝗔𝗪𝗦 𝗜𝗔𝗠 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗖𝗲𝗻𝘁𝗲𝗿 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗻𝗲𝘁𝘄𝗼𝗿𝗸 𝗮𝗰𝗰𝗲𝘀𝘀 𝗰𝗼𝗻𝘁𝗿𝗼𝗹𝘀 𝗳𝗼𝗿 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗦𝘁𝗼𝗿𝗲
+Ahora se puede restringir por red de origen el acceso a las APIs de Identity Store y SCIM, cerrando un camino para cambiar usuarios y grupos desde fuera de la red.
+
+🧩 𝗖𝗩𝗘𝘀 𝗻𝘂𝗲𝘃𝗮𝘀 𝗽𝗮𝗿𝗮 𝗿𝗲𝘃𝗶𝘀𝗮𝗿:
+• CVE-2026-105811: Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnABot on AWS
+• CVE-2026-105812, CVE-2026-106032: Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF
+• CVE-2026-104019: OS command injection in the Studio Space startup script in Amazon SageMaker Distribution
+…y 4 más en el informe completo.
+
+📌 𝗧𝗮𝗺𝗯𝗶é𝗻 𝘀𝗮𝗹𝗶ó:
+6 novedades más y 1 publicación de blog en el informe completo.
+
+💬 ¿Los toolkits de agentes de IA ya están en tu proceso de parches, o todavía quedan fuera?
+
+#AWS #SeguridadEnLaNube #AWSSecurity #CVE #Ciberseguridad</pre></div>
+<div class="card"><p class="sub" style="margin:0 0 8px">Primer comentario</p><pre class="links" id="links">AWS Security Hub introduces remediation plans to prioritize and fix security exposures: https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/
+Amazon GuardDuty now supports centralized management using AWS Organizations declarative policies: https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-org-enablement-policies/
+GuardDuty Runtime Monitoring is now included in the AWS Security Hub Threat Analytics plan: https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-runtime-monitoring/
+AWS Continuum for Penetration Testing now supports continuous penetration testing integrated directly into your CI/CD pipeline: https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-penetration-testing/
+AWS Private CA now provides detailed certificate issuance logs: https://aws.amazon.com/about-aws/whats-new/2026/10/aws-private-ca-certificate-issuance-logs/
+AWS IAM Identity Center now supports network access controls for Identity Store: https://aws.amazon.com/about-aws/whats-new/2026/10/aws-identity-store-network-controls/
+CVE-2026-105811: https://aws.amazon.com/security/security-bulletins/rss/2026-126-aws/
+CVE-2026-105812, CVE-2026-106032: https://aws.amazon.com/security/security-bulletins/rss/2026-127-aws/
+CVE-2026-104019: https://aws.amazon.com/security/security-bulletins/rss/2026-125-aws/
+CVE-2026-103956, CVE-2026-103957, CVE-2026-103958: https://aws.amazon.com/security/security-bulletins/rss/2026-124-aws/
+CVE-2026-103505: https://aws.amazon.com/security/security-bulletins/rss/2026-120-aws/
+CVE-2026-104002: https://aws.amazon.com/security/security-bulletins/rss/2026-123-aws/
+CVE-2026-104020: https://aws.amazon.com/security/security-bulletins/rss/2026-122-aws/</pre></div>
+</div>
+<script>
+(function(){
+  var post=document.getElementById('post').textContent, n=post.length, el=document.getElementById('count');
+  el.textContent=n+' / 3000 caracteres'; el.className='count '+(n<=3000?'ok':'bad');
+  document.querySelectorAll('button[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var text=document.getElementById(b.getAttribute('data-copy')).textContent, label=b.textContent;
+      function done(){b.textContent='Copiado';setTimeout(function(){b.textContent=label},1500)}
+      if(navigator.clipboard){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+      function fallback(){var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();
+        try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(t)}
+    });
+  });
+})();
+</script></body></html>

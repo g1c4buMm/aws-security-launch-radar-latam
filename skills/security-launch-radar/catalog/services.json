@@ -1,0 +1,314 @@
+{
+ "_doc": "AWS security services used to recognize security items. 'tags' = What's New product tags. 'keywords' = regex matched against title and summary. 'domain' = security domain (used by roadmap v0.3 filters). 'core': false = mixed service; the item counts as security only if its title is about security.",
+ "services": {
+  "iam": {
+   "name": "AWS IAM",
+   "domain": "identidade-acesso",
+   "tags": [
+    "aws-iam",
+    "aws-identity-and-access-management"
+   ],
+   "keywords": "\\bIAM\\b(?! Identity Center)|Identity and Access Management|IAM Access Analyzer"
+  },
+  "iam-identity-center": {
+   "name": "IAM Identity Center",
+   "domain": "identidade-acesso",
+   "tags": [
+    "aws-iam-identity-center"
+   ],
+   "keywords": "IAM Identity Center|Identity Store"
+  },
+  "sts": {
+   "name": "AWS STS",
+   "domain": "identidade-acesso",
+   "tags": [
+    "aws-security-token-service"
+   ],
+   "keywords": "Security Token Service|\\bSTS\\b"
+  },
+  "cognito": {
+   "name": "Amazon Cognito",
+   "domain": "identidade-acesso",
+   "tags": [
+    "amazon-cognito"
+   ],
+   "keywords": "Cognito"
+  },
+  "verified-permissions": {
+   "name": "Amazon Verified Permissions",
+   "domain": "identidade-acesso",
+   "tags": [
+    "amazon-verified-permissions"
+   ],
+   "keywords": "Verified Permissions|\\bCedar\\b"
+  },
+  "directory-service": {
+   "name": "AWS Directory Service",
+   "domain": "identidade-acesso",
+   "tags": [
+    "aws-directory-service"
+   ],
+   "keywords": "Directory Service|Managed Microsoft AD"
+  },
+  "guardduty": {
+   "name": "Amazon GuardDuty",
+   "domain": "deteccao-resposta",
+   "tags": [
+    "amazon-guardduty"
+   ],
+   "keywords": "GuardDuty"
+  },
+  "security-hub": {
+   "name": "AWS Security Hub",
+   "domain": "deteccao-resposta",
+   "tags": [
+    "aws-security-hub"
+   ],
+   "keywords": "Security Hub"
+  },
+  "detective": {
+   "name": "Amazon Detective",
+   "domain": "deteccao-resposta",
+   "tags": [
+    "amazon-detective"
+   ],
+   "keywords": "Amazon Detective"
+  },
+  "security-lake": {
+   "name": "Amazon Security Lake",
+   "domain": "deteccao-resposta",
+   "tags": [
+    "amazon-security-lake"
+   ],
+   "keywords": "Security Lake"
+  },
+  "security-incident-response": {
+   "name": "AWS Security Incident Response",
+   "domain": "deteccao-resposta",
+   "tags": [
+    "aws-security-incident-response"
+   ],
+   "keywords": "Security Incident Response"
+  },
+  "inspector": {
+   "name": "Amazon Inspector",
+   "domain": "vulnerabilidades",
+   "tags": [
+    "amazon-inspector"
+   ],
+   "keywords": "Amazon Inspector|\\bInspector\\b"
+  },
+  "continuum": {
+   "name": "AWS Continuum",
+   "domain": "vulnerabilidades",
+   "tags": [
+    "aws-continuum"
+   ],
+   "keywords": "AWS Continuum|penetration test"
+  },
+  "cve": {
+   "name": "Security Bulletins / CVEs",
+   "domain": "vulnerabilidades",
+   "tags": [],
+   "keywords": "\\bCVE-\\d{4}-\\d+"
+  },
+  "kms": {
+   "name": "AWS KMS",
+   "domain": "protecao-dados",
+   "tags": [
+    "aws-kms",
+    "aws-key-management-service"
+   ],
+   "keywords": "Key Management Service|\\bKMS\\b"
+  },
+  "cloudhsm": {
+   "name": "AWS CloudHSM",
+   "domain": "protecao-dados",
+   "tags": [
+    "aws-cloudhsm"
+   ],
+   "keywords": "CloudHSM"
+  },
+  "secrets-manager": {
+   "name": "AWS Secrets Manager",
+   "domain": "protecao-dados",
+   "tags": [
+    "aws-secrets-manager"
+   ],
+   "keywords": "Secrets Manager"
+  },
+  "macie": {
+   "name": "Amazon Macie",
+   "domain": "protecao-dados",
+   "tags": [
+    "amazon-macie"
+   ],
+   "keywords": "Macie"
+  },
+  "acm": {
+   "name": "AWS Certificate Manager",
+   "domain": "protecao-dados",
+   "tags": [
+    "aws-certificate-manager"
+   ],
+   "keywords": "Certificate Manager|\\bACM\\b"
+  },
+  "private-ca": {
+   "name": "AWS Private CA",
+   "domain": "protecao-dados",
+   "tags": [
+    "aws-private-certificate-authority"
+   ],
+   "keywords": "Private CA|Private Certificate Authority"
+  },
+  "payment-cryptography": {
+   "name": "AWS Payment Cryptography",
+   "domain": "protecao-dados",
+   "tags": [
+    "aws-payment-cryptography"
+   ],
+   "keywords": "Payment Cryptography"
+  },
+  "backup": {
+   "name": "AWS Backup",
+   "domain": "protecao-dados",
+   "tags": [
+    "aws-backup"
+   ],
+   "keywords": "AWS Backup|logically air-gapped"
+  },
+  "waf": {
+   "name": "AWS WAF",
+   "domain": "rede-perimetro",
+   "tags": [
+    "aws-waf"
+   ],
+   "keywords": "\\bWAF\\b"
+  },
+  "shield": {
+   "name": "AWS Shield",
+   "domain": "rede-perimetro",
+   "tags": [
+    "aws-shield"
+   ],
+   "keywords": "AWS Shield|\\bDDoS\\b"
+  },
+  "firewall-manager": {
+   "name": "AWS Firewall Manager",
+   "domain": "rede-perimetro",
+   "tags": [
+    "aws-firewall-manager"
+   ],
+   "keywords": "Firewall Manager"
+  },
+  "network-firewall": {
+   "name": "AWS Network Firewall",
+   "domain": "rede-perimetro",
+   "tags": [
+    "aws-network-firewall"
+   ],
+   "keywords": "Network Firewall"
+  },
+  "dns-firewall": {
+   "name": "Route 53 Resolver DNS Firewall",
+   "domain": "rede-perimetro",
+   "tags": [],
+   "keywords": "DNS Firewall"
+  },
+  "verified-access": {
+   "name": "AWS Verified Access",
+   "domain": "rede-perimetro",
+   "tags": [
+    "aws-verified-access"
+   ],
+   "keywords": "Verified Access"
+  },
+  "privatelink": {
+   "name": "AWS PrivateLink",
+   "domain": "rede-perimetro",
+   "tags": [
+    "aws-privatelink"
+   ],
+   "keywords": "PrivateLink"
+  },
+  "client-vpn": {
+   "name": "AWS Client VPN",
+   "domain": "rede-perimetro",
+   "tags": [
+    "aws-client-vpn"
+   ],
+   "keywords": "Client VPN"
+  },
+  "organizations": {
+   "name": "AWS Organizations",
+   "domain": "governanca-compliance",
+   "tags": [
+    "aws-organizations"
+   ],
+   "keywords": "AWS Organizations|\\bSCPs?\\b|declarative polic"
+  },
+  "control-tower": {
+   "name": "AWS Control Tower",
+   "domain": "governanca-compliance",
+   "tags": [
+    "aws-control-tower"
+   ],
+   "keywords": "Control Tower"
+  },
+  "config": {
+   "name": "AWS Config",
+   "domain": "governanca-compliance",
+   "tags": [
+    "aws-config"
+   ],
+   "keywords": "AWS Config|Config rules?|conformance pack"
+  },
+  "cloudtrail": {
+   "name": "AWS CloudTrail",
+   "domain": "governanca-compliance",
+   "tags": [
+    "aws-cloudtrail"
+   ],
+   "keywords": "CloudTrail"
+  },
+  "audit-manager": {
+   "name": "AWS Audit Manager",
+   "domain": "governanca-compliance",
+   "tags": [
+    "aws-audit-manager"
+   ],
+   "keywords": "Audit Manager"
+  },
+  "artifact": {
+   "name": "AWS Artifact",
+   "domain": "governanca-compliance",
+   "tags": [
+    "aws-artifact"
+   ],
+   "keywords": "AWS Artifact"
+  },
+  "ram": {
+   "name": "AWS Resource Access Manager",
+   "domain": "governanca-compliance",
+   "tags": [
+    "aws-resource-access-manager"
+   ],
+   "keywords": "Resource Access Manager"
+  },
+  "bedrock-guardrails": {
+   "name": "Amazon Bedrock Guardrails",
+   "domain": "seguranca-ia",
+   "tags": [],
+   "keywords": "Bedrock Guardrails|Guardrails for Amazon Bedrock|prompt injection"
+  },
+  "agentcore": {
+   "name": "Amazon Bedrock AgentCore",
+   "domain": "seguranca-ia",
+   "core": false,
+   "tags": [
+    "amazon-bedrock-agentcore"
+   ],
+   "keywords": "AgentCore"
+  }
+ }
+}

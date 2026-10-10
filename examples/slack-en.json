@@ -1,0 +1,116 @@
+{
+ "text": "AWS Security Weekly Radar | A heavy week for AI tooling CVEs, plus practical wins in detection: GuardDuty by organization policy and grouped remediation in Security Hub.",
+ "blocks": [
+  {
+   "type": "header",
+   "text": {
+    "type": "plain_text",
+    "text": "🛡️ AWS Security Weekly Radar"
+   }
+  },
+  {
+   "type": "context",
+   "elements": [
+    {
+     "type": "mrkdwn",
+     "text": "Week of 2026-09-30 to 2026-10-07"
+    }
+   ]
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "*A heavy week for AI tooling CVEs, plus practical wins in detection: GuardDuty by organization policy and grouped remediation in Security Hub.*"
+   }
+  },
+  {
+   "type": "divider"
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "*This week's highlights*"
+   }
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "🟠 `NEWS` *<https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/|AWS Security Hub introduces remediation plans to prioritize and fix security exposures>* _(2026-10-01)_\n*Why it matters:* Remediation plans group exposure findings by root cause, so one fix can close several exposures. Each plan comes with step-by-step guidance in CLI, Terraform, CloudFormation and CDK.\n*Suggested action:* Use the critical and high plans as next sprint's backlog and keep the fixes in IaC."
+   }
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "🟠 `NEWS` *<https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-org-enablement-policies/|Amazon GuardDuty now supports centralized management using AWS Organizations declarative policies>* _(2026-10-01)_\n*Why it matters:* GuardDuty can now be enabled through an AWS Organizations declarative policy, which covers existing accounts and every new one without custom automation.\n*Suggested action:* Replace enablement scripts with the declarative policy and check coverage per account and Region."
+   }
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "🟠 `NEWS` *<https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-runtime-monitoring/|GuardDuty Runtime Monitoring is now included in the AWS Security Hub Threat Analytics plan>* _(2026-10-02)_\n*Why it matters:* Runtime Monitoring is now part of the Security Hub Threat Analytics plan, with no separate GuardDuty charge where Security Hub is on.\n*Suggested action:* Review runtime coverage for EC2, EKS and Fargate and remove duplicate billing."
+   }
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "🟠 `NEWS` *<https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-penetration-testing/|AWS Continuum for Penetration Testing now supports continuous penetration testing integrated directly into your CI/CD pipeline>* _(2026-10-05)_\n*Why it matters:* AWS Continuum can run penetration tests inside CI/CD pipelines (public preview), moving testing from yearly to every change.\n*Suggested action:* Pilot it on a non-critical repository and compare findings with your last external pentest."
+   }
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "⚪ `NEWS` *<https://aws.amazon.com/about-aws/whats-new/2026/10/aws-private-ca-certificate-issuance-logs/|AWS Private CA now provides detailed certificate issuance logs>* _(2026-10-05)_\n*Why it matters:* Private CA now logs every issued certificate in CloudTrail, including content, issuing CA and requester. Audit evidence for your PKI without manual collection.\n*Suggested action:* Route these events to your audit trail and alert on unexpected issuers."
+   }
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "⚪ `NEWS` *<https://aws.amazon.com/about-aws/whats-new/2026/10/aws-identity-store-network-controls/|AWS IAM Identity Center now supports network access controls for Identity Store>* _(2026-10-05)_\n*Why it matters:* You can restrict the Identity Store and SCIM APIs by source network, closing a path for changing users and groups from outside your network.\n*Suggested action:* Allow only your identity provider and provisioning automation ranges."
+   }
+  },
+  {
+   "type": "divider"
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "*Also released*\n`NEWS` _News · AWS What's New_\n• <https://aws.amazon.com/about-aws/whats-new/2026/10/aws-client-vpn-device-posture/|AWS Client VPN now supports device posture assessment>\n• <https://aws.amazon.com/about-aws/whats-new/2026/10/aws-secrets-manager-security-posture-recommendations|Improve your secrets security posture with actionable recommendations in the AWS Secrets Manager console>\n• <https://aws.amazon.com/about-aws/whats-new/2026/10/AWS-Certificate-Manager-ACME-Privatelink|AWS Certificate Manager now supports ACME issuance through AWS PrivateLink>\n• <https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/|AgentCore Gateway supports private TLS certificates for VPC endpoints>\n• <https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-dns-analytics-insights/|Announcing DNS analytics and insights for Route 53 Global Resolver and DNS Firewall>\n• <https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions|AWS IAM Identity Center extends multi-Region support to more AWS Regions>\n\n`BLOG` _Blog posts · AWS security blogs_\n• <https://aws.amazon.com/blogs/networking-and-content-delivery/protect-mcp-endpoints-at-the-edge-with-amazon-cloudfront-and-aws-waf/|Protect MCP Endpoints at the Edge with Amazon CloudFront and AWS WAF>"
+   }
+  },
+  {
+   "type": "divider"
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "🧩 *Good to know: CVEs and security bulletins*"
+   }
+  },
+  {
+   "type": "section",
+   "text": {
+    "type": "mrkdwn",
+    "text": "• <https://aws.amazon.com/security/security-bulletins/rss/2026-126-aws/|CVE-2026-105811> Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnABot on AWS · _Important · 2026-10-07_\n• <https://aws.amazon.com/security/security-bulletins/rss/2026-127-aws/|CVE-2026-105812, CVE-2026-106032> Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF · _Important · 2026-10-06_\n   Code execution when importing a crafted agent, plus SSRF. Update the toolkit in dev and CI.\n• <https://aws.amazon.com/security/security-bulletins/rss/2026-125-aws/|CVE-2026-104019> OS command injection in the Studio Space startup script in Amazon SageMaker Distribution · _Important · 2026-10-02_\n• <https://aws.amazon.com/security/security-bulletins/rss/2026-124-aws/|CVE-2026-103956, CVE-2026-103957, CVE-2026-103958> Issues in Loom for AWS · _Important · 2026-10-02_\n• <https://aws.amazon.com/security/security-bulletins/rss/2026-120-aws/|CVE-2026-103505> Mount Option Injection in Amazon EFS CSI Driver · _Important · 2026-10-02_\n• <https://aws.amazon.com/security/security-bulletins/rss/2026-123-aws/|CVE-2026-104002> Fail-open error handling in the data masking utility in Powertools for AWS Lambda (Python) · _Important · 2026-10-01_\n   Masking can fail open in versions 3.6.0 to 3.34.0: sensitive fields may reach logs.\n• <https://aws.amazon.com/security/security-bulletins/rss/2026-122-aws/|CVE-2026-104020> Uncontrolled recursion in the Ion reader in Amazon Ion Python · _Important · 2026-10-01_\n• <https://aws.amazon.com/security/security-bulletins/rss/2026-027-aws/|no CVE> `UPDATED` Dirty Frag and other issues in Amazon Linux kernels · _n/a · 2026-10-06_\n"
+   }
+  },
+  {
+   "type": "context",
+   "elements": [
+    {
+     "type": "mrkdwn",
+     "text": "AI-assisted summary of public AWS sources. Always confirm details in the linked source."
+    }
+   ]
+  }
+ ]
+}

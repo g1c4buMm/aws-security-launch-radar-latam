@@ -1,0 +1,21 @@
+{
+ "headline": "One sentence with the main message of the week",
+ "highlights": [
+  {
+   "item_id": "<id from items.json>",
+   "priority": "high | medium | low",
+   "why_it_matters": "Practical impact for a security team.",
+   "action": "One concrete next step."
+  }
+ ],
+ "also_noted": [
+  "<id>"
+ ],
+ "question": "Optional closing question for the LinkedIn post.",
+ "cves": [
+  {
+   "item_id": "<bulletin id>",
+   "note": "Optional, up to 200 characters."
+  }
+ ]
+}

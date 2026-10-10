@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Security Weekly Radar</title>
+<meta name="description" content="A Claude Code skill that reads the last 7 days of AWS security news and sends one short review, by email and Slack, in English, Portuguese or Spanish.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, step rail on the left, screens in window frames. Same system as the LiliAI kit page. */
+:root{
+  --bg:#f6f5f3; --surface:#ffffff; --ink:#1c1916; --muted:#6b635b; --line:#e2ddd7;
+  --accent:#b9561c; --accent-soft:#f6e3d6; --ok:#2f7d55; --warn:#a66a00; --bad:#b42318;
+  --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#13110f; --surface:#1d1a17; --ink:#ede7e0; --muted:#a59c92; --line:#332e29;
+  --accent:#ef7d3c; --accent-soft:#3a2416; --ok:#5cc08b; --warn:#e0a640; --bad:#ff8f8f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13110f; --surface:#1d1a17; --ink:#ede7e0; --muted:#a59c92; --line:#332e29;
+  --accent:#ef7d3c; --accent-soft:#3a2416; --ok:#5cc08b; --warn:#e0a640; --bad:#ff8f8f; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+code,kbd{font-family:var(--mono);font-size:.9em}
+.eyebrow{font:500 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+section{padding-block:72px;border-top:1px solid var(--line)}
+.lead{color:var(--muted);max-width:62ch;font-size:1.05rem;margin-top:12px}
+
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font:600 1rem var(--mono);color:var(--ink);text-decoration:none}
+.brand b{color:var(--accent)}
+.nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.nav a{color:var(--muted);text-decoration:none;font-size:.9rem}
+.nav a:hover{color:var(--ink)}
+.theme{font:500 .8rem var(--mono);background:none;border:1px solid var(--line);border-radius:999px;color:var(--muted);padding:4px 10px;cursor:pointer}
+
+.hero{padding-block:64px 56px;border-top:0}
+.ascii{font:500 clamp(.42rem,1.55vw,.8rem)/1.05 var(--mono);color:var(--accent);margin:0 0 28px;white-space:pre;overflow-x:auto}
+.hero h1{font-size:clamp(2.1rem,5.6vw,3.6rem);font-weight:700;letter-spacing:-.02em;max-width:18ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font:600 .95rem var(--body);text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:hover{transform:translateY(-1px)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:32px;font:500 .8rem var(--mono);color:var(--muted)}
+.facts span::before{content:"▸ ";color:var(--accent)}
+
+.cycle{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:32px}
+@media(max-width:760px){.cycle{grid-template-columns:1fr}}
+.cycle div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.cycle .ai{border-color:var(--accent);background:color-mix(in srgb,var(--accent-soft) 55%,var(--surface))}
+.cycle small{font:500 .7rem var(--mono);color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+.cycle b{display:block;font-family:var(--display);font-size:1.15rem;margin:4px 0}
+.cycle p{font-size:.9rem;color:var(--muted)}
+
+.shot{margin:22px 0 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{font-size:.85rem;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line)}
+
+.rail{margin-top:36px;display:grid;gap:44px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:18px}
+.num{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font:600 .95rem var(--mono)}
+.step h3{margin-top:4px}
+.step p{color:var(--muted);margin-top:6px;max-width:66ch}
+pre.cmd{margin:12px 0 0;background:#15120f;color:#efe8e0;border-radius:8px;padding:12px 16px;font:.85rem/1.6 var(--mono);overflow-x:auto}
+pre.cmd span{color:#ef7d3c}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{font:600 .72rem var(--mono);letter-spacing:.06em;padding:3px 9px;border-radius:5px}
+.t-news{background:#eaf2ff;color:#0b5cad}.t-blog{background:#f4efff;color:#6941c6}.t-upd{background:#f2f4f7;color:#475467}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+@media(max-width:760px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:6px;align-content:start}
+.card code{color:var(--accent)}
+.card p{color:var(--muted);font-size:.92rem}
+.card a{font-weight:600;font-size:.92rem}
+
+table{width:100%;border-collapse:collapse;margin-top:24px;font-size:.93rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .75rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tw{overflow-x:auto}
+
+.road{margin-top:28px;display:grid;gap:10px;border-left:2px solid var(--line);padding-left:20px}
+.road div{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px}
+.road div::before{content:"";position:absolute;left:-28px;top:16px;width:12px;height:12px;border-radius:50%;background:var(--muted);border:2px solid var(--bg)}
+.road .now::before{background:var(--ok)}
+.road b{font-family:var(--mono);color:var(--accent)}
+.road span{float:right;color:var(--muted);font-size:.85rem}
+.road p{color:var(--muted);font-size:.9rem;margin-top:2px}
+
+details{border-bottom:1px solid var(--line);padding:14px 0}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);margin-top:8px}
+footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+ <a class="brand" href="#top">security<b>.radar</b></a>
+ <nav class="nav" aria-label="Sections"><a href="#cycle">How it works</a><a href="#setup">Set up</a><a href="#use">Use</a><a href="#demo">Demo</a><a href="#roadmap">Roadmap</a><a href="#faq">FAQ</a><a href="https://github.com/g1c4buMm/aws-security-launch-radar-latam">GitHub</a>
+  <button class="theme" id="theme" type="button" aria-label="Toggle color theme">◐ theme</button></nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+<pre class="ascii" aria-hidden="true">██████╗  █████╗ ██████╗  █████╗ ██████╗
+██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗
+██████╔╝███████║██║  ██║███████║██████╔╝
+██╔══██╗██╔══██║██║  ██║██╔══██║██╔══██╗
+██║  ██║██║  ██║██████╔╝██║  ██║██║  ██║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝</pre>
+<h1>AWS shipped it. Claude read it. Your team got the brief.</h1>
+<p class="lead">A Claude Code skill that reads the last 7 days of AWS security news and sends one short review, by email and Slack, in English, Portuguese or Spanish. The agent chooses and explains; the scripts guarantee the facts.</p>
+<div class="ctas"><a class="btn primary" href="https://github.com/g1c4buMm/aws-security-launch-radar-latam">Get it on GitHub</a><a class="btn" href="#setup">Set it up in 15 minutes</a><a class="btn" href="examples/email-en.html">See a real weekly email</a><a class="btn" href="demo/timelapse.html">Watch the install timelapse</a></div>
+<div class="facts"><span>runs on Claude Code</span><span>reports in en · pt-BR · es</span><span>Python standard library only</span><span>MIT-0</span></div>
+</div></section>
+
+<section id="cycle" aria-labelledby="cycle-t"><div class="wrap">
+<p class="eyebrow">How it works</p>
+<h2 id="cycle-t">Five steps. Only one of them writes.</h2>
+<p class="lead">Titles, dates and links come straight from AWS. Claude writes the short texts, and a validator checks them before anything is rendered or sent.</p>
+<div class="cycle">
+ <div><small>1 · script</small><b>Collect</b><p>Last 7 days of What's New, security blogs and bulletins</p></div>
+ <div class="ai"><small>2 · Claude</small><b>Curate</b><p>3 to 7 highlights and short texts in your language</p></div>
+ <div><small>3 · script</small><b>Validate</b><p>Only real items, no links in text, bulletins in their place</p></div>
+ <div><small>4 · script</small><b>Render</b><p>Email in HTML and text, plus a Slack message</p></div>
+ <div><small>5 · connector</small><b>Deliver</b><p>Gmail connector and Slack webhook, after a preview</p></div>
+</div>
+<figure class="shot"><img src="assets/screenshots/07-email.png" alt="The weekly email with highlights tagged NEWS" loading="lazy"><figcaption>A real email from the week of September 30, 2026: headline, highlights, also released and the CVE table.</figcaption></figure>
+<div class="tags"><span class="tag t-news">NEWS</span><span class="tag t-blog">BLOG</span><span class="tag t-upd">UPDATED</span></div>
+<p class="lead">Every item says where it came from: a What's New launch, a blog post, or an older bulletin that AWS updated this week.</p>
+</div></section>
+
+<section id="setup" aria-labelledby="setup-t"><div class="wrap">
+<p class="eyebrow">Set up once · about 15 minutes</p>
+<h2 id="setup-t">Five steps, then it runs by itself.</h2>
+<div class="rail">
+ <div class="step"><span class="num">1</span><div><h3>Get your private copy</h3><p>Use this template, set the new repository to private, clone it. Claude Code finds the skill in <code>.claude/skills/</code>.</p>
+  <pre class="cmd"><span>$</span> git clone https://github.com/&lt;your-user&gt;/aws-security-launch-radar-latam.git</pre>
+  <figure class="shot"><img src="assets/screenshots/01-clone.png" alt="Cloning the private copy" loading="lazy"></figure></div></div>
+ <div class="step"><span class="num">2</span><div><h3>Check the sources</h3><p><code>fetch_feeds.py</code> reaches AWS What's New, the security blogs and the bulletins. Old bulletins resurfaced by AWS are counted as updates, not as new.</p>
+  <figure class="shot"><img src="assets/screenshots/02-sources.png" alt="The three sources answering" loading="lazy"></figure></div></div>
+ <div class="step"><span class="num">3</span><div><h3>Connect Gmail</h3><p>Once, at <a href="https://claude.ai/customize/connectors">claude.ai/customize/connectors</a>. Claude Code and the routine both send through it.</p>
+  <figure class="shot"><img src="assets/screenshots/03-gmail.png" alt="Gmail connector (illustration)" loading="lazy"><figcaption>Illustration with fictional data.</figcaption></figure></div></div>
+ <div class="step"><span class="num">4</span><div><h3>Create a Slack webhook (optional)</h3><p>A Slack app with Incoming Webhooks, one channel. The URL lives in an environment variable, never in a file.</p>
+  <pre class="cmd"><span>$</span> export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...</pre>
+  <figure class="shot"><img src="assets/screenshots/04-slack-webhook.png" alt="Slack Incoming Webhook (illustration)" loading="lazy"><figcaption>Illustration with fictional data.</figcaption></figure></div></div>
+ <div class="step"><span class="num">5</span><div><h3>Choose the language and recipients</h3><p>Three questions. The whole report follows the language: <code>en</code>, <code>pt-BR</code> or <code>es</code>.</p>
+  <pre class="cmd"><span>$</span> python3 setup.py --language pt-BR --email security@example.com --slack</pre>
+  <figure class="shot"><img src="assets/screenshots/05-setup.png" alt="setup.py choosing Portuguese" loading="lazy"></figure></div></div>
+</div></div></section>
+
+<section id="use" aria-labelledby="use-t"><div class="wrap">
+<p class="eyebrow">Use · every week</p>
+<h2 id="use-t">One request, or no request at all.</h2>
+<div class="rail">
+ <div class="step"><span class="num">6</span><div><h3>Run the security radar</h3><p>In Claude Code, from the repository folder. You get a preview, and nothing is sent until you confirm.</p>
+  <pre class="cmd"><span>&gt;</span> run the security radar</pre>
+  <figure class="shot"><img src="assets/screenshots/06-run.png" alt="The radar running in Claude Code" loading="lazy"></figure>
+  <figure class="shot"><img src="assets/screenshots/08-slack.png" alt="The same review in Slack" loading="lazy"><figcaption>The same review in Slack, in the same order.</figcaption></figure></div></div>
+ <div class="step"><span class="num">7</span><div><h3>Schedule it every Monday</h3><p>A Claude Code routine runs it in scheduled mode: no questions, sends on its own, and explains any failure in the run summary.</p>
+  <pre class="cmd">Use the security-launch-radar skill in scheduled mode.</pre>
+  <figure class="shot"><img src="assets/screenshots/09-schedule.png" alt="Weekly routine (illustration)" loading="lazy"><figcaption>Illustration.</figcaption></figure></div></div>
+</div></div></section>
+
+<section aria-labelledby="lang-t"><div class="wrap">
+<p class="eyebrow">Your team's language</p>
+<h2 id="lang-t">The same week, three ways.</h2>
+<div class="grid3">
+ <div class="card"><code>--language en</code><h3>AWS Security Weekly Radar</h3><a href="examples/email-en.html">Open the email →</a></div>
+ <div class="card"><code>--language pt-BR</code><h3>Radar Semanal de Segurança AWS</h3><a href="examples/email-pt-BR.html">Abrir o email →</a></div>
+ <div class="card"><code>--language es</code><h3>Radar Semanal de Seguridad AWS</h3><a href="examples/email-es.html">Abrir el email →</a></div>
+</div></div></section>
+
+<section aria-labelledby="trust-t"><div class="wrap">
+<p class="eyebrow">Trust by design</p>
+<h2 id="trust-t">If it does not match the week, it is not sent.</h2>
+<div class="tw"><table>
+ <thead><tr><th>Shown in the report</th><th>Comes from</th></tr></thead>
+ <tbody><tr><td>Titles, dates, links</td><td>AWS sources, via <code>fetch_feeds.py</code></td></tr>
+ <tr><td>Severity, CVE IDs</td><td>The bulletin itself</td></tr>
+ <tr><td>NEWS, BLOG, UPDATED</td><td>The item's source and bulletin number</td></tr>
+ <tr><td>Headline, why it matters, action</td><td>Claude, checked by <code>validate_radar.py</code></td></tr></tbody></table></div>
+<figure class="shot"><img src="assets/screenshots/10-validator.png" alt="The validator rejecting a draft with six errors" loading="lazy"><figcaption>A draft that breaks the rules on purpose. The CI keeps it rejected.</figcaption></figure>
+</div></section>
+
+<section id="demo" aria-labelledby="demo-t"><div class="wrap">
+<p class="eyebrow">Show your team</p>
+<h2 id="demo-t">A 20-minute demo, ready to present.</h2>
+<div class="grid3">
+ <div class="card"><h3>Opening deck</h3><p>12 slides with speaker notes on the N key.</p><a href="demo/opening.html">Open the deck →</a></div>
+ <div class="card"><h3>Install timelapse</h3><p>From an empty folder to the first email in about 70 seconds.</p><a href="demo/timelapse.html">Play it →</a></div>
+ <div class="card"><h3>Script</h3><p>Minute by minute, with a plan B for every step.</p><a href="demo/SCRIPT.md">Read the script →</a></div>
+</div></div></section>
+
+<section id="roadmap" aria-labelledby="road-t"><div class="wrap">
+<p class="eyebrow">Roadmap</p>
+<h2 id="road-t">One thing well, then the rest.</h2>
+<p class="lead">Target dates for a single part-time maintainer. External reviews (open source, legal) set the pace.</p>
+<div class="road">
+ <div class="now"><b>v0.1</b> MVP: weekly security review <span>publication target: week of Dec 7, 2026</span><p>Three languages, email and Slack, validator. Pilot Oct 12 to Nov 9.</p></div>
+ <div><b>v0.1.1</b> Bulletin archive <span>Nov 16, 2026</span><p>Keeps each week's bulletins, since AWS publishes only about 30 days.</p></div>
+ <div><b>v0.2</b> Periods and trends <span>Jan 29, 2027</span><p>Monthly, quarterly, YTD and custom dates, with checked numbers.</p></div>
+ <div><b>v0.2.1</b> Kiro support <span>Feb 26, 2027</span><p>The same radar from Kiro, with an agent-neutral core.</p></div>
+ <div><b>v0.3</b> Personalization <span>Mar 12, 2027</span><p>Personas, company services, filters, "affects you" in the CVE table.</p></div>
+ <div><b>v0.4</b> Brazil regulatory mapping <span>May 14, 2027</span><p>LGPD, CMN 4,893 / BCB 85 and PCI DSS, after legal review.</p></div>
+ <div><b>v0.5</b> Spanish-speaking LATAM and auto-discovery <span>Jul 30, 2027</span><p>Mexico, Colombia and Chile catalogs; opt-in discovery of services in use.</p></div>
+</div></div></section>
+
+<section id="faq" aria-labelledby="faq-t"><div class="wrap">
+<p class="eyebrow">FAQ</p>
+<h2 id="faq-t">When something does not go as expected</h2>
+<div style="margin-top:20px">
+ <details><summary>Claude does not use the skill</summary><p>Start <code>claude</code> from the repository folder, where <code>.claude/skills/</code> lives.</p></details>
+ <details><summary>Old bulletins show up</summary><p>AWS sometimes updates old bulletins with a new date. They appear tagged UPDATED, after the new ones, and only when relevant.</p></details>
+ <details><summary>Nothing was sent</summary><p>The validator failed three times, or the Gmail connector or the webhook is missing. The run summary says which.</p></details>
+ <details><summary>Can I get a monthly report, or only GuardDuty?</summary><p>Not in the MVP. Periods arrive in v0.2 and service filters in v0.3; see the roadmap above.</p></details>
+ <details><summary>Where does my data go?</summary><p>Nowhere new. Email goes through your Gmail connector, Slack through your webhook, and your settings live in your private copy.</p></details>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">Independent community project, not affiliated with or endorsed by Amazon Web Services. <a href="https://github.com/g1c4buMm/aws-security-launch-radar-latam">Source on GitHub</a>. The review is AI-assisted: confirm details in the linked AWS source. MIT-0. Screens labeled as illustrations use fictional data.</div></footer>
+<script>
+(function(){
+  var b=document.getElementById('theme'), r=document.documentElement;
+  try{var s=localStorage.getItem('radar-theme');if(s){r.setAttribute('data-theme',s)}}catch(e){}
+  b.onclick=function(){
+    var dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var next=dark?'light':'dark'; r.setAttribute('data-theme',next);
+    try{localStorage.setItem('radar-theme',next)}catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

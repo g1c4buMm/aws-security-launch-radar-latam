@@ -1,0 +1,762 @@
+{
+ "generated_at": "2026-10-07T19:27:04Z",
+ "window": {
+  "from": "2026-09-30",
+  "to": "2026-10-07"
+ },
+ "errors": [],
+ "stats": {
+  "total": 51,
+  "by_source": {
+   "security-bulletins": 26,
+   "security-blog": 9,
+   "whats-new": 16
+  },
+  "cves": 26,
+  "bulletins_new": 7,
+  "bulletins_updated": 19
+ },
+ "items": [
+  {
+   "id": "3fe0a88c",
+   "source": "security-bulletins",
+   "date": "2026-10-07",
+   "title": "CVE-2026-105811 - Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnABot on AWS",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-126-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-105811"
+   ],
+   "severity": "Important",
+   "updated": false,
+   "summary": "Bulletin ID: 2026-126-AWS Scope: AWS Content Type: Important (requires attention) Publication Date: 10/06/2026 13:00 PM PDT Description: QnABot on AWS is a sample solution of a multi-channel, multi-language conversational interface (chatbot) that responds to your customer's questions, answers, and feedback. We identified CVE-2026-105811 in the optional Amazon Q Business Lambda hook sample of QnABot on AWS. The Amazon Q Business Lambda hook sample (q-business-lambda-hook) is an optional integration sample included in the QnABot on AWS repository. It requires separate, manual deployment and addi"
+  },
+  {
+   "id": "d89a5446",
+   "source": "security-blog",
+   "date": "2026-10-07",
+   "title": "Part 1 – Cybersecurity journeys: I didn’t plan this",
+   "link": "https://aws.amazon.com/blogs/security/part-1-cybersecurity-journeys-i-didnt-plan-this/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "If you’ve ever wondered whether your background qualifies you for a career in cybersecurity, you’re not alone — and you’re probably more prepared than you think. My name is Shannon Brazil, and I work in security communications at Amazon Web Services (AWS). I have been in the security space for over a decade, and my [...]"
+  },
+  {
+   "id": "3fffca4b",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "Issue with FreeRTOS-Plus-TCP - MAC Address Validation Bypass and ICMP Echo Reply Integer Underflow",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-021-aws/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "10f6ffb7",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "Issues with Amazon Athena ODBC Driver",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-013-aws/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "1f27d487",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-5747 - Out-of-bounds Write in Firecracker virtio-pci Transport",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-015-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-5747"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "164ec165",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "Issue with AWS Ops Wheel (CVE-2026-6911 and CVE-2026-6912",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-018-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-6911",
+    "CVE-2026-6912"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "41be976f",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-5190 - AWS C Event Stream Streaming Decoder Stack Buffer Overflow",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-011-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-5190"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "686c213f",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "Issues with AWS Research and Engineering Studio (RES)",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-014-aws/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "1a4b4944",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-7424 - Integer Underflow in DHCPv6 Sub-Option Parser in FreeRTOS-Plus-TCP",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-022-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-7424"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "de232c06",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-6437 - Mount Option Injection in Amazon EFS CSI Driver",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-016-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-6437"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "25fb7e5c",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-7191- Arbitrary Code Execution via Sandbox Bypass in QnABot on AWS",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-020-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-7191"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "fadcc334",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-6550 - Key commitment policy bypass via shared key cache in AWS Encryption SDK for Python",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-017-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-6550"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "adc7525b",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "Issue with Amazon SageMaker Python SDK - Model artifact integrity verification issues (CVE-2026-8596 & CVE-2026-8597)",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-031-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-8596",
+    "CVE-2026-8597"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "c220fb45",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-8178 - Remote Code Execution via Unsafe Class Loading in Amazon Redshift JDBC Driver",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-028-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-8178"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "694b3839",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-8838 - Remote Code Execution in amazon-redshift-python-driver",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-033-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-8838"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "e84d2d62",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-31431",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-026-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-31431"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "a53d9a35",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-7461 - OS Command Injection in Amazon ECS Agent via FSx Windows File Server Volume Credentials",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-024-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-7461"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "4e7bbcc0",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "Ongoing updates on Copy.fail and variants",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-030-aws/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "a279f7f1",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "Fragnesia Local Privilege Escalation report via ESP-in-TCP in the Linux Kernel",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-029-aws/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "7d1b04c1",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-8686 - Heap out-of-bounds read in coreMQTT MQTT5 property parsing",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-032-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-8686"
+   ],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "36350240",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "Dirty Frag and other issues in Amazon Linux kernels",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-027-aws/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": true,
+   "summary": ""
+  },
+  {
+   "id": "4a93b9f8",
+   "source": "security-bulletins",
+   "date": "2026-10-06",
+   "title": "CVE-2026-105812 and CVE-2026-106032: Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-127-aws/",
+   "services": [
+    "cve",
+    "agentcore"
+   ],
+   "cve_ids": [
+    "CVE-2026-105812",
+    "CVE-2026-106032"
+   ],
+   "severity": "Important",
+   "updated": false,
+   "summary": "Bulletin ID: 2026-127-AWS Scope: AWS Content Type: Important (requires attention) Publication Date: 10/06/2026 13:30 PM PDT Description: bedrock-agentcore-starter-toolkit is an AWS-maintained open-source Python package, distributed via GitHub and PyPI, that provides a command-line interface for importing Amazon Bedrock Agents into local development environments. We identified CVE-2026-105812, a code injection issue that could allow arbitrary code execution when a specially crafted agent is imported and subsequently run or deployed, and CVE-2026-106032, an external reference handling issue that"
+  },
+  {
+   "id": "269cef84",
+   "source": "security-blog",
+   "date": "2026-10-06",
+   "title": "Improving SPIRE security and resiliency with AWS managed services",
+   "link": "https://aws.amazon.com/blogs/security/improving-spire-security-and-resiliency-with-aws-managed-services/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "In cloud-centered environments, establishing trust between workloads is fundamental to securing machine-to-machine communication. Traditional approaches such as API keys, shared secrets, and static service account credentials weren’t designed for the scale and ephemeral nature of cloud workloads. This drives an organizational need to shift from long-term, static credentials to short-lived cryptographic workload identities. Organizations are [...]"
+  },
+  {
+   "id": "756fe536",
+   "source": "security-blog",
+   "date": "2026-10-06",
+   "title": "Adopt AWS Backup policies at enterprise scale using AWS Organizations",
+   "link": "https://aws.amazon.com/blogs/storage/adopt-aws-backup-policies-at-enterprise-scale-using-aws-organizations/",
+   "services": [
+    "backup",
+    "organizations"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "Consider a platform team responsible for data protection across a large, regulated enterprise. Over years of growth, the organization now runs hundreds of Amazon Web Services (AWS) accounts across many teams and AWS Regions, and each team has configured its own backup approach. The platform team now faces a familiar challenge: how to enforce consistent, [...]"
+  },
+  {
+   "id": "35aaf76f",
+   "source": "security-blog",
+   "date": "2026-10-06",
+   "title": "All the numbers: Amazon Prime Day 2026 powered by AWS",
+   "link": "https://aws.amazon.com/blogs/aws/all-the-numbers-amazon-prime-day-2026-powered-by-aws/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "Amazon Prime Day 2026 was exclusively for Prime members and ran June 23–26, 2026 with millions of deals across more than 35 categories. As part of our annual tradition of sharing how AWS powered Prime Day (2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024, and 2025), I want to share the services and chart-topping metrics [...]"
+  },
+  {
+   "id": "66e22ddc",
+   "source": "security-blog",
+   "date": "2026-10-06",
+   "title": "Identity-aware AI data agents with AWS Lake Formation and Trusted Identity Propagation",
+   "link": "https://aws.amazon.com/blogs/security/identity-aware-ai-data-agents-with-aws-lake-formation-and-trusted-identity-propagation/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "You’re building a data agent that lets business users ask questions about lakehouse data in natural language. You’ve already built governance policies that control who can access which datasets. The challenge is making the agent respect those rules without rebuilding them in your application code. When a user asks a question, the agent maps it [...]"
+  },
+  {
+   "id": "eb43f3de",
+   "source": "whats-new",
+   "date": "2026-10-06",
+   "title": "AWS Certificate Manager now supports ACME issuance through AWS PrivateLink",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/AWS-Certificate-Manager-ACME-Privatelink",
+   "services": [
+    "acm",
+    "privatelink"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS Certificate Manager (ACM) now supports AWS PrivateLink for ACME public certificate issuance, allowing you to request and renew public TLS certificates over a private network path that stays within the AWS network. You can now create a VPC interface endpoint to the ACM ACME service and route issuance traffic from any ACMEv2-compatible client through your VPC. If you're already using ACME with ACM, setup requires no changes to your ACME clients. After you create your managed ACME endpoint in ACM, you create a standard VPC interface endpoint using the VPC console, AWS CLI, or AWS CloudFormati"
+  },
+  {
+   "id": "5d991027",
+   "source": "security-blog",
+   "date": "2026-10-05",
+   "title": "AWS Continuum sets a new standard in autonomous code security",
+   "link": "https://aws.amazon.com/blogs/security/aws-continuum-sets-a-new-standard-in-autonomous-code-security/",
+   "services": [
+    "continuum"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "As AI models become more capable, they uncover more security vulnerabilities and identify increasingly sophisticated paths to exploit them, raising the bar for how quickly defenders must respond. Security teams now face more potential vulnerabilities than their existing processes were designed to handle — each requiring investigation, reproduction, and a repair that must be tested [...]"
+  },
+  {
+   "id": "d7f65eff",
+   "source": "whats-new",
+   "date": "2026-10-05",
+   "title": "AWS IAM Identity Center now supports network access controls for Identity Store",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-identity-store-network-controls/",
+   "services": [
+    "iam-identity-center"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS IAM Identity Center helps you configure the single sign-on experience for your workforce to AWS accounts and applications. IAM Identity Center now supports network access controls for Identity Store, which stores your users and groups. You can restrict access to the Identity Store API and the SCIM API based on the network that requests originate from. Your custom applications and user provisioning workflows use the Identity Store API to manage and look up users and groups, and your external identity provider uses the SCIM API to synchronize users and groups. For the Identity Store API, you"
+  },
+  {
+   "id": "740d74a4",
+   "source": "whats-new",
+   "date": "2026-10-05",
+   "title": "AWS Control Tower AFT now supports plan-only customization runs",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-control-tower-aft/",
+   "services": [
+    "control-tower"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS Control Tower Account Factory for Terraform (AFT) now supports plan-only customization runs, giving administrators the ability to preview Terraform changes before applying them across their managed accounts. AFT is an open-source Terraform module that automates account provisioning and customization in AWS Control Tower environments. Previously, invoking customizations always triggered a full Terraform apply with no way to preview changes, making it difficult to validate expected outcomes or catch unintended configuration drift before a broad rollout. With plan-only runs, administrators ca"
+  },
+  {
+   "id": "13cd62b8",
+   "source": "whats-new",
+   "date": "2026-10-05",
+   "title": "AWS Continuum for Penetration Testing now supports continuous penetration testing integrated directly into your CI/CD pipeline",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-penetration-testing/",
+   "services": [
+    "continuum"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS Continuum for Penetration Testing now integrates continuous penetration testing directly into your CI/CD pipeline (public preview) AWS Continuum for Penetration Testing (formerly AWS Security Agent) already provides continuous, on-demand penetration testing without the need to contract third-party pentest vendors. Now, in public preview, Continuum for Penetration Testing shifts security testing even further left by integrating directly into your existing CI/CD systems, making penetration testing a deploy-time event. Development teams ship code daily, but even with on-demand penetration tes"
+  },
+  {
+   "id": "1db28565",
+   "source": "security-blog",
+   "date": "2026-10-05",
+   "title": "Protect MCP Endpoints at the Edge with Amazon CloudFront and AWS WAF",
+   "link": "https://aws.amazon.com/blogs/networking-and-content-delivery/protect-mcp-endpoints-at-the-edge-with-amazon-cloudfront-and-aws-waf/",
+   "services": [
+    "waf"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS WAF gives you a practical way to secure and observe Model Context Protocol (MCP) endpoints at the edge. MCP has quickly become the standard way AI agents communicate to tools and data. Originally, it was a stateful protocol built around long-running sessions, persistent connections, and client-to-server-instance binding. The 2026-07-28 MCP revision redesigned MCP as [...]"
+  },
+  {
+   "id": "8aa5a39c",
+   "source": "whats-new",
+   "date": "2026-10-05",
+   "title": "AWS Client VPN now supports device posture assessment",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-client-vpn-device-posture/",
+   "services": [
+    "client-vpn"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS Client VPN now supports device posture assessment, allowing you to verify that connecting user devices meet your security and compliance requirements before granting network access. This feature integrates with your existing device posture providers, so only trusted, compliant devices can access your AWS resources through Client VPN. Previously, Client VPN authenticated users through certificates, SAML, or Active Directory. With device posture assessment, you can now also integrate CrowdStrike , Jamf , or JumpCloud with Client VPN to automatically evaluate device security signals such as c"
+  },
+  {
+   "id": "12996625",
+   "source": "whats-new",
+   "date": "2026-10-05",
+   "title": "AWS Advanced Ruby Driver Wrapper is generally available",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-ruby-driver-wrapper-available/",
+   "services": [
+    "iam",
+    "secrets-manager"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "The Amazon Web Services (AWS) Advanced Ruby Driver Wrapper is now generally available for use with Amazon RDS and Amazon Aurora PostgreSQL and MySQL-compatible databases. This advanced database driver reduces RDS Blue/Green switchover, Aurora Global database switchover and database failover times, improving application availability. Additionally, it supports multiple authentication mechanisms for your database, including AWS Secrets Manager authentication, and token-based authentication with AWS Identity and Access Management (IAM). The AWS Advanced Ruby Driver Wrapper builds on top of the com"
+  },
+  {
+   "id": "23a6243a",
+   "source": "whats-new",
+   "date": "2026-10-05",
+   "title": "AWS Batch now supports Amazon EKS access entry authentication",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-batch-access-entries/",
+   "services": [
+    "iam"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS Batch now supports Amazon EKS access entry authentication for compute environments. EKS access entries provide an API-driven approach to granting IAM principals access to Kubernetes clusters, complementing the existing aws-auth ConfigMap . AWS Batch can now authenticate to your cluster through the access entry mechanism, simplifying cluster setup and authentication lifecycle management. To get started, use the CreateComputeEnvironment or UpdateComputeEnvironment APIs to set accessEntry.desiredState to ENABLED on all AWS Batch compute environments targeting your cluster. AWS Batch creates o"
+  },
+  {
+   "id": "6043373c",
+   "source": "whats-new",
+   "date": "2026-10-05",
+   "title": "AWS Private CA now provides detailed certificate issuance logs",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-private-ca-certificate-issuance-logs/",
+   "services": [
+    "private-ca",
+    "cloudtrail"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS Private CA announces detailed certificate issuance logs, a new AWS CloudTrail service event that records the complete certificate content, issuing CA information, requester identity, and signing status for every issuance. You can use these events for compliance auditing, certificate inventory, algorithm migration tracking, and failed-issuance monitoring. Previously, the CloudTrail management event for the IssueCertificate API confirmed that the API call succeeded by providing a certificate ARN but did not capture the certificate content, information about the CA that signed it, or issuance"
+  },
+  {
+   "id": "994f5027",
+   "source": "security-bulletins",
+   "date": "2026-10-02",
+   "title": "CVE-2026-104019 - OS command injection in the Studio Space startup script in Amazon SageMaker Distribution",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-125-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-104019"
+   ],
+   "severity": "Important",
+   "updated": false,
+   "summary": "Bulletin ID: 2026-125-AWS Scope: AWS Content Type: Important (requires attention) Publication Date: 10/02/2026 13:00 PM PDT Description: Amazon SageMaker Unified Studio is an AWS service that unifies data, analytics, and AI development. It lets you find and access your organization's data and act on it with integrated, purpose-built tools. We identified CVE-2026-104019, an issue with the startup of SageMaker Spaces in SageMaker Unified Studio. The startup script in a SageMaker Space performs a network validation against all the available SageMaker connections in a project. Under certain condit"
+  },
+  {
+   "id": "7ea27758",
+   "source": "security-bulletins",
+   "date": "2026-10-02",
+   "title": "CVE-2026-103956, CVE-2026-103957, and CVE-2026-103958 - Issues in Loom for AWS",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-124-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-103956",
+    "CVE-2026-103957",
+    "CVE-2026-103958"
+   ],
+   "severity": "Important",
+   "updated": false,
+   "summary": "Bulletin ID: 2026-124-AWS Scope: AWS Content Type: Important (requires attention) Publication Date: 10/02/2026 12:00 PM PDT Description: Loom is an AWS Labs open-source AI agent orchestration platform. We have identified and addressed three issues in Loom for AWS, described below. We recommend upgrading to the latest version (1.7.0) and ensuring any forked or derivative code is patched to incorporate the new fixes. - CVE-2026-103956 ‐ Authentication bypass in Loom for AWS (CWE-306, CWE-1188) An issue in the authentication dependency in Loom for AWS versions <1.6.1 allowed any network client to"
+  },
+  {
+   "id": "f1cddc55",
+   "source": "security-bulletins",
+   "date": "2026-10-02",
+   "title": "CVE-2026-103505 - Mount Option Injection in Amazon EFS CSI Driver",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-120-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-103505"
+   ],
+   "severity": "Important",
+   "updated": false,
+   "summary": "Bulletin ID: 2026-120-AWS Scope: AWS Content Type: Important (requires attention) Publication Date: 10/01/2026 08:30 AM PDT Description: The Amazon EFS CSI Driver is a Container Storage Interface driver that allows Kubernetes clusters to use Amazon Elastic File System. We identified CVE-2026-103505, where an actor with PersistentVolume creation privileges can inject additional mount options through the mounttargetipmap volumeAttribute. Appending comma-separated values to a value inside that JSON map causes the mount utility to parse them as separate mount options. Impacted versions: >= v3.1.0 "
+  },
+  {
+   "id": "a5630b33",
+   "source": "whats-new",
+   "date": "2026-10-02",
+   "title": "AgentCore Gateway supports private TLS certificates for VPC endpoints",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/",
+   "services": [
+    "private-ca",
+    "agentcore"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "Amazon Bedrock AgentCore Gateway now supports TLS certificates signed by private certificate authorities (CAs) on MCP, OpenAPI, and HTTP proxy targets. This feature enables you to connect securely to gateway targets that use TLS certificates issued by your own private certificate authority. With this feature, you can establish native connections to private endpoints in your VPC without requiring an intermediate Application Load Balancer. You can register a private CA certificate with gateway targets that use private endpoints powered by Amazon VPC Lattice. The gateway fetches your PEM-encoded "
+  },
+  {
+   "id": "d991a808",
+   "source": "whats-new",
+   "date": "2026-10-02",
+   "title": "GuardDuty Runtime Monitoring is now included in the AWS Security Hub Threat Analytics plan",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-runtime-monitoring/",
+   "services": [
+    "guardduty",
+    "security-hub"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "Today, AWS announces that Amazon GuardDuty Runtime Monitoring is now included in the AWS Security Hub Threat Analytics plan. Runtime Monitoring inspects operating system, network, and file activity to surface threats such as container escapes, privilege escalation, and cryptomining on Amazon EC2 instances, Amazon EKS clusters, and Amazon ECS tasks on AWS Fargate. Security Hub now bills this coverage through streamlined pricing. If you have Security Hub enabled in an account and region, you no longer receive separate Amazon GuardDuty charges for Runtime Monitoring for that account and region. T"
+  },
+  {
+   "id": "61c44aa8",
+   "source": "security-bulletins",
+   "date": "2026-10-01",
+   "title": "CVE-2026-104002: Fail-open error handling in the data masking utility in Powertools for AWS Lambda (Python)",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-123-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-104002"
+   ],
+   "severity": "Important",
+   "updated": false,
+   "summary": "Bulletin ID: 2026-123-AWS Scope: AWS Content Type: Important (requires attention) Publication Date: 10/01/2026 14:00 PM PDT Description: Powertools for AWS Lambda (Python) is a developer toolkit that implements serverless best practices and increases developer velocity. We identified CVE-2026-104002, a fail-open error handling issue within the data masking utility of Powertools for AWS Lambda (Python). This issue might allow actors to read sensitive field values that the application intended to mask. Impacted versions: >=3.6.0 AND <=3.34.0 Please refer to the article below for the most up-to-d"
+  },
+  {
+   "id": "ec33662f",
+   "source": "security-bulletins",
+   "date": "2026-10-01",
+   "title": "CVE-2026-104020 - Uncontrolled recursion in the Ion reader in Amazon Ion Python",
+   "link": "https://aws.amazon.com/security/security-bulletins/rss/2026-122-aws/",
+   "services": [
+    "cve"
+   ],
+   "cve_ids": [
+    "CVE-2026-104020"
+   ],
+   "severity": "Important",
+   "updated": false,
+   "summary": "Bulletin ID: 2026-122-AWS Scope: AWS Content Type: Important (requires attention) Publication Date: 10/01/2026 13:30 PM PDT Description: Amazon Ion Python is an open-source Python implementation of the Amazon Ion data notation. We identified CVE-2026-104020, an issue in the Ion reader in Amazon Ion Python before version 0.15.0 where a crafted, deeply nested Ion value could cause the application to raise an error or crash, resulting in a denial of service. Impacted versions: < 0.15.0 Please refer to the article below for the most up-to-date and complete information related to this AWS Security "
+  },
+  {
+   "id": "2a4ae828",
+   "source": "security-blog",
+   "date": "2026-10-01",
+   "title": "Share Systems Manager documents across your AWS Organization with AWS RAM",
+   "link": "https://aws.amazon.com/blogs/mt/share-systems-manager-documents-across-your-aws-organization-with-aws-ram/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "Introduction If you operate AWS Systems Manager (SSM) documents, such as Automation runbooks and Run Command documents, across an AWS Organization, you must decide which accounts can run them. Until now, that meant sharing each document with a list of individual account IDs through the ModifyDocumentPermission API, which accepts up to 1,000 account IDs per [...]"
+  },
+  {
+   "id": "288d7368",
+   "source": "security-blog",
+   "date": "2026-10-01",
+   "title": "Continuous AI security with F5 AI Guardrails and AWS Bedrock",
+   "link": "https://aws.amazon.com/blogs/apn/continuous-ai-security-with-f5-ai-guardrails-and-aws-bedrock/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "F5 AI Guardrails and F5 AI Red Team deliver continuous adaptive security for AI applications on AWS Bedrock. This post introduces three capabilities for enterprise AI security: pre-deployment model evaluation, adversarial testing at scale, and adaptive runtime protection. Learn how these capabilities compress the gap between threat discovery and defense deployment from weeks to minutes."
+  },
+  {
+   "id": "c1f88e43",
+   "source": "whats-new",
+   "date": "2026-10-01",
+   "title": "Amazon GuardDuty now supports centralized management using AWS Organizations declarative policies",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-org-enablement-policies/",
+   "services": [
+    "guardduty",
+    "organizations"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "Amazon GuardDuty now supports AWS Organizations declarative policies, enabling you to centrally enable GuardDuty threat detection across every account and Region in your AWS organization. Using an organization policy, you can now apply a centrally managed GuardDuty enablement configuration. The configuration applies to existing accounts and is automatically maintained as new accounts join your organization. Enabling GuardDuty across all relevant accounts and Regions helps ensure comprehensive threat detection coverage. Previously, keeping enablement aligned across a large multi-account, multi-"
+  },
+  {
+   "id": "e40c9146",
+   "source": "whats-new",
+   "date": "2026-10-01",
+   "title": "Amazon Corretto 8 September 2026 Patch Updates",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-corretto-8-sept-2026-updates/",
+   "services": [],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "On September 30, 2026, Amazon announced a patch update for the following Amazon Corretto Long-Term Support (LTS) version of OpenJDK: Corretto 8u504 is now available for download . Amazon Corretto is a no-cost, multi-platform, production-ready distribution of OpenJDK. This patch includes the tzdata 2026d updates. Visit Corretto home page to download Corretto 27, Corretto 25, Corretto 21, Corretto 17, Corretto 11, or Corretto 8. You can also get the updates on your Linux system by configuring a Corretto Apt, Yum, or Apk repo . Feedback is welcomed !"
+  },
+  {
+   "id": "95de98e6",
+   "source": "whats-new",
+   "date": "2026-10-01",
+   "title": "AWS Security Hub introduces remediation plans to prioritize and fix security exposures",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/",
+   "services": [
+    "security-hub"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "AWS Security Hub now offers remediation plans that group related exposure findings sharing a root cause. Instead of addressing each exposure individually, you can now fix a single underlying resource, such as a misconfigured setting or overly permissive policy, and resolve or reduce the severity of multiple exposures at once. Each remediation plan includes prioritization guidance (Critical, High, Medium, or Low), impact assessment, and detailed step-by-step instructions with examples in multiple formats including AWS CLI, Terraform, CloudFormation, Python, and CDK. Security Hub automatically p"
+  },
+  {
+   "id": "3ea9c1fe",
+   "source": "whats-new",
+   "date": "2026-10-01",
+   "title": "Announcing DNS analytics and insights for Route 53 Global Resolver and DNS Firewall",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-dns-analytics-insights/",
+   "services": [
+    "dns-firewall"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "Route 53 Global Resolver and DNS Firewall now provide DNS analytics and insights through native Amazon CloudWatch integration. These new capabilities enable network administrators and security teams to gain full observability into DNS query patterns, monitor DNS Firewall rule effectiveness, detect anomalous activity, and optimize DNS infrastructure performance. DNS analytics and insights is available in all AWS Regions where Amazon CloudWatch, Route 53 Global Resolver, and DNS Firewall are available. With CloudWatch Metrics and Contributor Insights, customers can search and analyze DNS query l"
+  },
+  {
+   "id": "016f948c",
+   "source": "whats-new",
+   "date": "2026-10-01",
+   "title": "AWS IAM Identity Center extends multi-Region support to more AWS Regions",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions",
+   "services": [
+    "iam-identity-center"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "IAM Identity Center helps you connect your workforce identities to AWS once and streamline access management to AWS accounts and applications. You can now replicate IAM Identity Center to opt-in AWS Regions, and between Regions within the AWS GovCloud (US) and AWS China Regions. Previously, multi-Region support was available in the enabled-by-default commercial AWS Regions. This helps you improve the resilience of user access to AWS accounts and deploy AWS applications in the AWS Regions that best align with your business needs. When you enable multi-Region support, IAM Identity Center automat"
+  },
+  {
+   "id": "1162b271",
+   "source": "whats-new",
+   "date": "2026-10-01",
+   "title": "Improve your secrets security posture with actionable recommendations in the AWS Secrets Manager console",
+   "link": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-secrets-manager-security-posture-recommendations",
+   "services": [
+    "secrets-manager"
+   ],
+   "cve_ids": [],
+   "severity": "",
+   "updated": false,
+   "summary": "​​​AWS Secrets Manager now integrates with the AWS Recommended Actions framework to surface contextual, actionable suggestions for your secrets directly in the Secrets Manager console. ​​ ​​With this launch, you can view tailored recommendations alongside your secrets to improve your security posture and follow best practices without leaving the console. For example, you can identify secrets that need rotation configured, use a customer managed key instead of default service-provided key for encryption, and act on secrets configuration improvements, all from a single view.​ ​​This feature is a"
+  }
+ ]
+}

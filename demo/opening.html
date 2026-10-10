@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Radar Opening Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 16:9 slides in normal flow; every inner size in cqw (100cqw = slide width), so nothing depends on JavaScript or window height. Without JavaScript the slides stack. Dark by design. */
+:root{
+  --stage:#0e0c0a; --bg:#15120f; --surface:#201c18; --ink:#efe8e0; --muted:#a39a90; --line:#3a332c;
+  --accent:#ef7d3c; --accent-soft:#3a2416; --ok:#5cc08b; --warn:#e0a640; --bad:#ff8f8f;
+  --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--stage);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:min(1280px,max(480px,calc((100vh - 120px) * 1.778)));margin:0 auto;padding:16px 16px 24px;display:grid;gap:12px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font:500 12px var(--mono);color:var(--muted)}
+.bar .btns{display:flex;gap:8px;flex-wrap:wrap}
+.bar button{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:7px 11px;cursor:pointer}
+.bar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.deck{display:grid;gap:16px}
+.slide{container-type:inline-size;position:relative;width:100%;aspect-ratio:16/9;background:var(--bg);border-radius:8px;overflow:hidden}
+.in{position:absolute;inset:0;padding:5.6cqw 6.9cqw;display:flex;flex-direction:column;justify-content:center;gap:2.2cqw}
+.slide::after{content:attr(data-n);position:absolute;right:3.1cqw;bottom:2.3cqw;font:500 1.1cqw var(--mono);color:var(--muted)}
+.js .deck{position:relative;aspect-ratio:16/9;display:block}
+.js .slide{position:absolute;inset:0;display:none}
+.js .slide.on{display:block}
+.deck:fullscreen{background:var(--stage);display:grid;place-items:center}
+.deck:fullscreen .slide.on{position:relative;width:min(100vw,177.78vh);height:auto;margin:auto}
+.eyebrow{font:500 1.17cqw var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--display);margin:0;line-height:1.04;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:6.4cqw;font-weight:700}
+h2{font-size:4.6cqw;font-weight:700;max-width:24ch}
+p{margin:0}
+.lead{font-size:2.1cqw;line-height:1.4;color:var(--muted);max-width:44ch}
+.ascii{font:500 1.25cqw/1.02 var(--mono);color:var(--accent);white-space:pre;margin:0}
+code{font-family:var(--mono);color:var(--accent)}
+.big{font:700 13cqw/1 var(--display);color:var(--accent);letter-spacing:-.04em}
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:1.6cqw}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:.8cqw;padding:2cqw 2.1cqw;display:grid;gap:.9cqw;align-content:start}
+.card.hi{border-color:var(--accent)}
+.card h3{font:600 2.1cqw var(--display);margin:0}
+.card p{font-size:1.5cqw;line-height:1.45;color:var(--muted)}
+.n{font:600 1.2cqw var(--mono);color:var(--accent)}
+.note-card{align-self:flex-start;background:#f3ede3;color:#2a241e;border-radius:4px;padding:2.2cqw 2.7cqw;transform:rotate(-1.5deg);box-shadow:0 1.4cqw 3.1cqw rgba(0,0,0,.45);font:500 3cqw/1.45 var(--hand);min-width:40cqw}
+.note-card s{color:#8a7f73}
+.term{background:#0e0c0a;border:1px solid var(--line);border-radius:.8cqw;padding:2cqw 2.4cqw;font:1.55cqw/1.65 var(--mono);color:#d8cfc4;white-space:pre}
+.term .c{color:var(--accent)}.term .ok{color:var(--ok)}.term .bad{color:var(--bad)}.term .dim{color:var(--muted)}
+.tags{display:flex;gap:1cqw;flex-wrap:wrap}
+.tag{font:600 1.2cqw var(--mono);letter-spacing:.06em;padding:.4cqw 1cqw;border-radius:.4cqw}
+.t-news{background:#eaf2ff;color:#0b5cad}.t-blog{background:#f4efff;color:#6941c6}.t-upd{background:#f2f4f7;color:#475467}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;align-items:center}
+.stat{display:grid;gap:.4cqw}.stat b{font:700 6cqw/1 var(--display)}.stat span{font-size:1.5cqw;color:var(--muted)}
+.tl{display:grid;gap:1cqw}
+.tl div{display:grid;grid-template-columns:9cqw 15cqw 1fr;gap:1.4cqw;align-items:baseline;font-size:1.6cqw;padding-bottom:.9cqw;border-bottom:1px solid var(--line)}
+.tl b{font:600 1.5cqw var(--mono);color:var(--accent)}.tl span{color:var(--muted)}
+.notes{display:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:15px;line-height:1.5;color:var(--ink)}
+.notes.show{display:block}
+@media (prefers-reduced-motion:no-preference){.js .slide.on .in{animation:fade .35s ease}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="bar"><span id="pos">AWS Security Weekly Radar · opening</span>
+  <div class="btns"><button id="prev" type="button">← Prev</button><button id="next" type="button">Next →</button><button id="notesBtn" type="button">Notes (N)</button><button id="fs" type="button">Full screen (F)</button></div></div>
+ <main class="deck" id="deck">
+
+ <section class="slide" data-n="1/12" data-notes="Good afternoon. Eight minutes: why weekly security news gets lost, and a small kit that fixes it. Quick question: who here can name every AWS security bulletin from last week? Keep that answer in mind.">
+  <div class="in"><pre class="ascii">██████╗  █████╗ ██████╗  █████╗ ██████╗
+██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗
+██████╔╝███████║██║  ██║███████║██████╔╝
+██╔══██╗██╔══██║██║  ██║██╔══██║██╔══██╗
+██║  ██║██║  ██║██████╔╝██║  ██║██║  ██║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝</pre>
+  <h1>AWS shipped it. Claude read it. Your team got the brief.</h1>
+  <p class="lead">A weekly review of AWS security news, in English, Portuguese or Spanish.</p></div></section>
+
+ <section class="slide" data-n="2/12" data-notes="This is one real week, September 30 to October 7. Fifty-one security items: sixteen launches, nine blog posts, twenty-six bulletins. And of those bulletins, only seven were new. Nineteen were old bulletins AWS updated with a new date. Telling those apart is already a job.">
+  <div class="in"><p class="eyebrow">One real week</p>
+  <div class="split"><div class="big">51</div>
+  <div class="row" style="grid-auto-flow:row;gap:2cqw">
+   <div class="stat"><b>16</b><span>launches on What's New</span></div>
+   <div class="stat"><b>9</b><span>security blog posts</span></div>
+   <div class="stat"><b>26</b><span>security bulletins: 7 new, 19 updates to older ones</span></div></div></div></div></section>
+
+ <section class="slide" data-n="3/12" data-notes="And this is what usually survives the week. Someone skims on Monday. By Thursday, it is 'some GuardDuty thing' and 'a CVE in some Lambda tool'. The news existed. It never turned into an action.">
+  <div class="in"><h2>Someone skims. Nobody remembers.</h2>
+  <div class="note-card">monday: AWS news<br>- GuardDuty thing??<br>- some CVE in <s>Lambda</s> a toolkit<br>- check later</div></div></section>
+
+ <section class="slide" data-n="4/12" data-notes="The radar is a five-step cycle. A script collects the last seven days. Claude curates: picks highlights and writes short texts in your language. A validator checks the draft. A script renders the email and the Slack message. And it is delivered. Claude is the only step that writes text.">
+  <div class="in"><p class="eyebrow">The weekly cycle</p><h2>Five steps. One of them writes.</h2>
+  <div class="row">
+   <div class="card"><span class="n">1 · script</span><h3>Collect</h3><p>Last 7 days of What's New, blogs and bulletins</p></div>
+   <div class="card hi"><span class="n">2 · Claude</span><h3>Curate</h3><p>Highlights and short texts in your language</p></div>
+   <div class="card"><span class="n">3 · script</span><h3>Validate</h3><p>Only real items. No links in text</p></div>
+   <div class="card"><span class="n">4 · script</span><h3>Render</h3><p>Email and Slack message</p></div>
+   <div class="card"><span class="n">5 · connector</span><h3>Deliver</h3><p>Gmail and Slack webhook</p></div></div></div></section>
+
+ <section class="slide" data-n="5/12" data-notes="Using it is one sentence in Claude Code. Run the security radar. It collects, writes, validates, renders, shows you a preview and asks before sending anything.">
+  <div class="in"><h2>One request.</h2>
+  <div class="term"><span class="c">&gt; run the security radar</span>
+<span class="ok">⏺</span> Bash(fetch_feeds.py)   <span class="dim">week 2026-09-30 to 2026-10-07 | items: 51</span>
+<span class="ok">⏺</span> Write(out/radar.json)
+<span class="ok">⏺</span> Bash(validate_radar.py) <span class="ok">radar valid</span>
+<span class="ok">⏺</span> Bash(render.py)         <span class="dim">email.html, email.txt, slack.json</span>
+⏺ Preview ready: 6 highlights, 7 also released, 8 bulletins. Send?</div></div></section>
+
+ <section class="slide" data-n="6/12" data-notes="What arrives. A headline. Three to seven highlights with priority, why it matters and one action. Also released, split into news and blog posts. And at the end, good to know: every new CVE in one table, with the updated tag for old bulletins.">
+  <div class="in"><p class="eyebrow">What lands in your inbox and Slack</p><h2>Read in three minutes.</h2>
+  <div class="row">
+   <div class="card"><h3>Headline</h3><p>The one message of the week</p></div>
+   <div class="card"><h3>Highlights</h3><p>3 to 7, with priority, why it matters and an action</p><div class="tags"><span class="tag t-news">NEWS</span><span class="tag t-blog">BLOG</span></div></div>
+   <div class="card"><h3>Also released</h3><p>The rest, split into News and Blog posts</p></div>
+   <div class="card"><h3>Good to know</h3><p>Every new CVE and bulletin in one table</p><div class="tags"><span class="tag t-upd">UPDATED</span></div></div></div></div></section>
+
+ <section class="slide" data-n="7/12" data-notes="One setup question decides the language. English, Portuguese or Spanish. Section titles, priorities, tags and Claude's texts all follow it. Service names and CVE IDs stay in English, because that is how people search for them.">
+  <div class="in"><p class="eyebrow">Chosen once at setup</p><h2>Your team's language.</h2>
+  <div class="row">
+   <div class="card"><span class="n">--language en</span><h3>AWS Security Weekly Radar</h3></div>
+   <div class="card"><span class="n">--language pt-BR</span><h3>Radar Semanal de Segurança AWS</h3></div>
+   <div class="card"><span class="n">--language es</span><h3>Radar Semanal de Seguridad AWS</h3></div></div></div></section>
+
+ <section class="slide" data-n="8/12" data-notes="The question I always get: can I trust what the model writes? The rule is: the agent chooses and explains, the scripts guarantee the facts. Titles, dates and links come only from AWS. The validator blocks invented items, links in text, unknown fields, and bulletins in the wrong place. If it fails, nothing is sent.">
+  <div class="in"><p class="eyebrow">Trust by design</p><h2>The agent chooses. The scripts guarantee the facts.</h2>
+  <div class="term"><span class="c">$ validate_radar.py --radar examples/radar-invalid.json</span>
+<span class="bad">INVALID RADAR (6 errors):</span>
+<span class="bad"> - radar: unknown fields ['latam_spotlight']</span>
+<span class="bad"> - highlights[2]: '4a93b9f8' is a bulletin; bulletins go only in 'cves'</span>
+<span class="bad"> - highlights[3]: 'action' contains a URL; links come only from items.json</span>
+<span class="bad"> - also_noted: item_id 'deadbeef' not in items.json</span>
+<span class="dim"># nothing is rendered or sent</span></div></div></section>
+
+ <section class="slide" data-n="9/12" data-notes="A real detail from this week. AWS resurfaced nineteen old bulletins with a new date. A naive digest would announce them as new. Bulletin numbers are sequential, so the radar knows: seven new, nineteen updates, tagged as such.">
+  <div class="in"><p class="eyebrow">A real week, a real catch</p><h2>Old bulletins do not pass as new.</h2>
+  <div class="split"><div class="stat"><b style="color:var(--ok)">7</b><span>new bulletins, all listed</span></div>
+  <div class="stat"><b style="color:var(--muted)">19</b><span>older bulletins updated this week, tagged UPDATED and shown only when relevant</span></div></div></div></section>
+
+ <section class="slide" data-n="10/12" data-notes="Then you stop running it by hand. A Claude Code routine runs it every Monday at eight, in scheduled mode: no questions, sends on its own, and if something is missing, it does not send and tells you why.">
+  <div class="in"><p class="eyebrow">Every Monday, 08:00</p><h2>Set it once. It shows up every week.</h2>
+  <div class="term"><span class="dim">schedule</span>  0 11 * * 1   <span class="dim"># 08:00 São Paulo</span>
+<span class="dim">prompt</span>    Use the security-launch-radar skill in scheduled mode.
+<span class="dim">delivery</span>  Gmail connector · SLACK_WEBHOOK_URL in the environment</div></div></section>
+
+ <section class="slide" data-n="11/12" data-notes="The MVP does one thing well. Then: periods and trends in January, Kiro support in February, personas and filters in March, and the Brazilian regulatory mapping in May, after legal review. Most of it is already prototyped.">
+  <div class="in"><p class="eyebrow">Roadmap</p><h2>One thing well, then the rest.</h2>
+  <div class="tl">
+   <div><b>v0.1</b><span>Dec 2026</span>Weekly review in three languages</div>
+   <div><b>v0.2</b><span>Jan 29, 2027</span>Monthly, quarterly and YTD, with trends</div>
+   <div><b>v0.2.1</b><span>Feb 26, 2027</span>Kiro support</div>
+   <div><b>v0.3</b><span>Mar 12, 2027</span>Personas, company services, filters</div>
+   <div><b>v0.4</b><span>May 14, 2027</span>LGPD, CMN 4,893 / BCB 85, PCI DSS mapping</div></div></div></section>
+
+ <section class="slide" data-n="12/12" data-notes="Fifteen minutes to set up. Clone a private copy, run setup, ask for the radar. Then let the routine take Mondays. Thank you.">
+  <div class="in"><p class="eyebrow">Your turn</p><h1>15 minutes to set up.<br>Mondays, handled.</h1>
+  <div class="term"><span class="c">$ git clone</span> &lt;your private copy&gt;
+<span class="c">$ python3 setup.py</span>
+<span class="c">&gt; run the security radar</span></div></div></section>
+
+ </main>
+ <div class="notes" id="notes" aria-live="polite"></div>
+</div>
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var slides=[].slice.call(document.querySelectorAll('.slide')), i=0;
+  var pos=document.getElementById('pos'), notes=document.getElementById('notes');
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    pos.textContent='AWS Security Weekly Radar · '+(i+1)+'/'+slides.length;
+    notes.textContent=slides[i].getAttribute('data-notes')||'';
+    try{history.replaceState(null,'','#'+(i+1))}catch(e){}
+  }
+  document.getElementById('prev').onclick=function(){show(i-1)};
+  document.getElementById('next').onclick=function(){show(i+1)};
+  document.getElementById('notesBtn').onclick=function(){notes.classList.toggle('show')};
+  document.getElementById('fs').onclick=function(){var d=document.getElementById('deck');if(document.fullscreenElement){document.exitFullscreen()}else if(d.requestFullscreen){d.requestFullscreen()}};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}
+    else if(e.key==='n'||e.key==='N'){notes.classList.toggle('show')}
+    else if(e.key==='f'||e.key==='F'){document.getElementById('fs').click()}
+  });
+  show((parseInt(location.hash.slice(1),10)||1)-1);
+})();
+</script>
+</body>
+</html>

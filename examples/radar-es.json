@@ -1,0 +1,79 @@
+{
+ "headline": "Semana con varias CVEs en herramientas de IA y avances prácticos en detección: GuardDuty por política de la organización y remediación agrupada en Security Hub.",
+ "highlights": [
+  {
+   "item_id": "95de98e6",
+   "priority": "medium",
+   "why_it_matters": "Los planes de remediación agrupan hallazgos de exposición por causa raíz: una sola corrección puede cerrar varias exposiciones. Cada plan incluye pasos en CLI, Terraform, CloudFormation y CDK.",
+   "action": "Usar los planes críticos y altos como backlog del próximo sprint y mantener las correcciones en IaC."
+  },
+  {
+   "item_id": "c1f88e43",
+   "priority": "medium",
+   "why_it_matters": "GuardDuty ahora se puede habilitar con una política declarativa de AWS Organizations, que cubre cuentas existentes y nuevas sin automatización propia.",
+   "action": "Reemplazar los scripts de habilitación por la política declarativa y revisar la cobertura por cuenta y región."
+  },
+  {
+   "item_id": "d991a808",
+   "priority": "medium",
+   "why_it_matters": "Runtime Monitoring ahora forma parte del plan Threat Analytics de Security Hub, sin cargo separado de GuardDuty donde Security Hub está activo.",
+   "action": "Revisar la cobertura de runtime en EC2, EKS y Fargate y eliminar cobros duplicados."
+  },
+  {
+   "item_id": "13cd62b8",
+   "priority": "medium",
+   "why_it_matters": "AWS Continuum puede ejecutar pruebas de penetración dentro del pipeline de CI/CD (vista previa pública), pasando de pruebas anuales a cada cambio.",
+   "action": "Hacer un piloto en un repositorio no crítico y comparar con el último pentest externo."
+  },
+  {
+   "item_id": "6043373c",
+   "priority": "low",
+   "why_it_matters": "Private CA ahora registra en CloudTrail cada certificado emitido, con contenido, CA emisora y solicitante. Evidencia de auditoría de la PKI sin recolección manual.",
+   "action": "Enviar estos eventos al registro de auditoría y alertar sobre emisores inesperados."
+  },
+  {
+   "item_id": "d7f65eff",
+   "priority": "low",
+   "why_it_matters": "Ahora se puede restringir por red de origen el acceso a las APIs de Identity Store y SCIM, cerrando un camino para cambiar usuarios y grupos desde fuera de la red.",
+   "action": "Permitir solo los rangos del proveedor de identidad y de la automatización de aprovisionamiento."
+  }
+ ],
+ "also_noted": [
+  "8aa5a39c",
+  "1162b271",
+  "eb43f3de",
+  "a5630b33",
+  "3ea9c1fe",
+  "016f948c",
+  "1db28565"
+ ],
+ "cves": [
+  {
+   "item_id": "3fe0a88c"
+  },
+  {
+   "item_id": "4a93b9f8",
+   "note": "Ejecución de código al importar un agente manipulado, además de SSRF. Actualizar el toolkit en dev y CI."
+  },
+  {
+   "item_id": "994f5027"
+  },
+  {
+   "item_id": "7ea27758"
+  },
+  {
+   "item_id": "f1cddc55"
+  },
+  {
+   "item_id": "61c44aa8",
+   "note": "El enmascaramiento puede fallar abierto en las versiones 3.6.0 a 3.34.0: campos sensibles pueden llegar a los logs."
+  },
+  {
+   "item_id": "ec33662f"
+  },
+  {
+   "item_id": "36350240"
+  }
+ ],
+ "question": "¿Los toolkits de agentes de IA ya están en tu proceso de parches, o todavía quedan fuera?"
+}

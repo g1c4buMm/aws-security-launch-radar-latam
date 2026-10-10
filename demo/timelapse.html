@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Radar Install Timelapse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: 16:9 stage in normal flow, sizes in cqw. Accelerated clock on top, caption at the bottom. Without JavaScript the scenes stack with their captions. Dark by design. */
+:root{
+  --stage:#0e0c0a; --bg:#15120f; --surface:#201c18; --ink:#efe8e0; --muted:#a39a90; --line:#3a332c; --accent:#ef7d3c; --ok:#5cc08b;
+  --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--stage);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:min(1280px,max(480px,calc((100vh - 150px) * 1.778)));margin:0 auto;padding:16px 16px 24px;display:grid;gap:12px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font:500 12px var(--mono);color:var(--muted)}
+.bar .btns{display:flex;gap:6px;flex-wrap:wrap}
+.bar button{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:7px 11px;cursor:pointer}
+.bar button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.bar button:focus-visible,.ticks button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.scenes{display:grid;gap:16px}
+.scene{container-type:inline-size;position:relative;width:100%;aspect-ratio:16/9;background:var(--bg);border-radius:8px;overflow:hidden}
+.js .scenes{position:relative;aspect-ratio:16/9;display:block}
+.js .scene{position:absolute;inset:0;display:none}
+.js .scene.on{display:block}
+.scenes:fullscreen{background:var(--stage);display:grid;place-items:center}
+.scene img{position:absolute;left:50%;top:6.5cqw;transform:translateX(-50%);height:70%;width:auto;border-radius:.8cqw}
+.js .scene.on img{animation:zoom 8s ease-out both}
+@keyframes zoom{from{transform:translateX(-50%) scale(1)}to{transform:translateX(-50%) scale(1.035)}}
+.stepno{position:absolute;top:2.2cqw;left:2.4cqw;font:500 1.15cqw var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hud{position:absolute;top:1.8cqw;right:2.2cqw;display:grid;justify-items:end;gap:.3cqw}
+.clock{font:600 3.2cqw/1 var(--mono);background:rgba(14,12,10,.85);border:1px solid var(--line);border-radius:.8cqw;padding:.7cqw 1.2cqw;font-variant-numeric:tabular-nums}
+.clock small{display:block;font-size:1.05cqw;color:var(--accent);letter-spacing:.12em;margin-bottom:.3cqw}
+.speed{font:500 1cqw var(--mono);color:var(--muted)}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:1.4cqw 2.4cqw 1.7cqw;background:linear-gradient(transparent,rgba(14,12,10,.95) 35%);display:grid;gap:.4cqw}
+.cap h2{font:700 2.3cqw/1.1 var(--display);margin:0}
+.cap p{margin:0;font-size:1.4cqw;line-height:1.4;color:#d6cdc2;max-width:80ch}
+.hide-narr .cap p{display:none}
+.ticks{display:flex;gap:4px}
+.ticks button{flex:1;height:6px;border:0;border-radius:3px;background:var(--line);cursor:pointer;padding:0}
+.ticks button.done{background:var(--accent)}
+.ticks button.cur{background:var(--ink)}
+.done-card{position:absolute;inset:0;display:grid;place-items:center;text-align:center;gap:1cqw;padding:6cqw}
+.done-card h2{font:700 6cqw/1 var(--display);margin:0;color:var(--accent)}
+.done-card p{font-size:2cqw;color:var(--muted)}
+.done-card code{font:1.8cqw var(--mono);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:.6cqw;padding:.6cqw 1.2cqw}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="bar"><span>Install timelapse · AWS Security Weekly Radar</span>
+  <div class="btns"><button id="play" type="button" aria-pressed="true">Pause (space)</button><button id="prev" type="button">←</button><button id="next" type="button">→</button><button id="narr" type="button" aria-pressed="true">Narration (N)</button><button id="fs" type="button">Full screen (F)</button></div></div>
+ <main class="scenes" id="scenes">
+  <section class="scene" data-start="0" data-end="1" data-dur="7"><span class="stepno">Step 1 · set up</span><img src="../assets/screenshots/01-clone.png" alt="Cloning the private copy of the repository">
+   <div class="cap"><h2>Your private copy</h2><p>Use this template, set the copy to private, clone it. The skill is already in .claude/skills, ready for Claude Code.</p></div></section>
+  <section class="scene" data-start="1" data-end="1.5" data-dur="6"><span class="stepno">Step 2 · set up</span><img src="../assets/screenshots/02-sources.png" alt="fetch_feeds.py reaching the three AWS sources">
+   <div class="cap"><h2>Check the three sources</h2><p>One command reads the week from AWS What's New, the security blogs and the bulletins. Fifty-one items, seven new bulletins, nineteen updates.</p></div></section>
+  <section class="scene" data-start="1.5" data-end="4" data-dur="7"><span class="stepno">Step 3 · set up</span><img src="../assets/screenshots/03-gmail.png" alt="Gmail connector connected (illustration)">
+   <div class="cap"><h2>Connect Gmail</h2><p>In the Claude connectors page, connect Gmail once. Claude Code and the weekly routine both send through it.</p></div></section>
+  <section class="scene" data-start="4" data-end="8" data-dur="7"><span class="stepno">Step 4 · set up</span><img src="../assets/screenshots/04-slack-webhook.png" alt="Slack Incoming Webhook (illustration)">
+   <div class="cap"><h2>A Slack webhook</h2><p>Create a Slack app, turn on Incoming Webhooks, pick the channel. The URL goes into an environment variable, never into a file.</p></div></section>
+  <section class="scene" data-start="8" data-end="9.5" data-dur="7"><span class="stepno">Step 5 · set up</span><img src="../assets/screenshots/05-setup.png" alt="setup.py choosing Portuguese">
+   <div class="cap"><h2>Three questions</h2><p>Language, recipients, Slack. This team picks Portuguese. The whole report will arrive in Portuguese.</p></div></section>
+  <section class="scene" data-start="9.5" data-end="12" data-dur="8"><span class="stepno">Step 6 · use</span><img src="../assets/screenshots/06-run.png" alt="The radar running in Claude Code">
+   <div class="cap"><h2>Run the security radar</h2><p>One sentence in Claude Code. It collects, writes the radar, validates it, renders it and asks before sending.</p></div></section>
+  <section class="scene" data-start="12" data-end="12.5" data-dur="7"><span class="stepno">Step 6 · use</span><img src="../assets/screenshots/07-email.png" alt="The weekly email in the inbox">
+   <div class="cap"><h2>The email lands</h2><p>Headline, highlights with NEWS and BLOG tags, also released, and every new CVE at the end.</p></div></section>
+  <section class="scene" data-start="12.5" data-end="12.75" data-dur="6"><span class="stepno">Step 6 · use</span><img src="../assets/screenshots/08-slack.png" alt="The weekly message in Slack">
+   <div class="cap"><h2>And in Slack</h2><p>The same review, in the same order, in the team channel.</p></div></section>
+  <section class="scene" data-start="12.75" data-end="14" data-dur="7"><span class="stepno">Step 7 · use</span><img src="../assets/screenshots/09-schedule.png" alt="Weekly routine (illustration)">
+   <div class="cap"><h2>Every Monday at eight</h2><p>A routine runs it in scheduled mode: no questions, sends on its own, explains any failure.</p></div></section>
+  <section class="scene" data-start="14" data-end="14" data-dur="6"><span class="stepno">Done</span>
+   <div class="done-card"><div><h2>14 minutes.</h2><p>From an empty folder to a weekly security review in your team's language.</p></div><code>&gt; run the security radar</code></div>
+   <div class="cap"><h2>Your turn</h2><p>Fourteen minutes to set up, then Mondays take care of themselves.</p></div></section>
+ </main>
+ <div class="ticks" id="ticks"></div>
+</div>
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var scenes=[].slice.call(document.querySelectorAll('.scene')), i=0, playing=true, timer=null, raf=null, t0=0;
+  var ticks=document.getElementById('ticks'), play=document.getElementById('play');
+  scenes.forEach(function(s,k){
+    var hud=document.createElement('div'); hud.className='hud';
+    hud.innerHTML='<div class="clock"><small>ELAPSED</small><span>00:00</span></div><div class="speed">accelerated</div>';
+    s.appendChild(hud);
+    var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Scene '+(k+1)); b.onclick=function(){go(k)}; ticks.appendChild(b);
+  });
+  function fmt(min){var s=Math.round(min*60);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+  function tickClock(){
+    var s=scenes[i], a=+s.dataset.start, b=+s.dataset.end, d=+s.dataset.dur*1000;
+    var p=Math.min(1,(performance.now()-t0)/d);
+    s.querySelector('.clock span').textContent=fmt(a+(b-a)*p);
+    if(playing&&p<1){raf=requestAnimationFrame(tickClock)}
+  }
+  function go(n){
+    i=(n+scenes.length)%scenes.length;
+    scenes.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    [].forEach.call(ticks.children,function(b,k){b.className=k<i?'done':k===i?'cur':''});
+    clearTimeout(timer); cancelAnimationFrame(raf); t0=performance.now(); tickClock();
+    if(playing&&i<scenes.length-1){timer=setTimeout(function(){go(i+1)},+scenes[i].dataset.dur*1000)}
+  }
+  function toggle(){playing=!playing;play.setAttribute('aria-pressed',playing);play.textContent=playing?'Pause (space)':'Play (space)';go(i)}
+  play.onclick=toggle;
+  document.getElementById('prev').onclick=function(){go(i-1)};
+  document.getElementById('next').onclick=function(){go(i+1)};
+  var narr=document.getElementById('narr');
+  narr.onclick=function(){var on=document.body.classList.toggle('hide-narr');narr.setAttribute('aria-pressed',!on)};
+  document.getElementById('fs').onclick=function(){var d=document.getElementById('scenes');if(document.fullscreenElement){document.exitFullscreen()}else if(d.requestFullscreen){d.requestFullscreen()}};
+  document.addEventListener('keydown',function(e){
+    if(e.key===' '){e.preventDefault();toggle()}
+    else if(e.key==='ArrowRight'){go(i+1)}else if(e.key==='ArrowLeft'){go(i-1)}
+    else if(e.key==='n'||e.key==='N'){narr.click()}else if(e.key==='f'||e.key==='F'){document.getElementById('fs').click()}
+  });
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){playing=false;play.setAttribute('aria-pressed','false');play.textContent='Play (space)'}
+  go(0);
+})();
+</script>
+</body>
+</html>

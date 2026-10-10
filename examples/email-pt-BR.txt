@@ -1,0 +1,63 @@
+Radar Semanal de Segurança AWS
+Semana de 2026-09-30 a 2026-10-07
+Semana com várias CVEs em ferramentas de IA e ganhos práticos em detecção: GuardDuty por política da organização e remediação agrupada no Security Hub.
+
+DESTAQUES DA SEMANA
+
+1. [Média] [NOVIDADE] AWS Security Hub introduces remediation plans to prioritize and fix security exposures (2026-10-01)
+https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/
+Por que importa: Os planos de remediação agrupam achados de exposição pela causa raiz: uma correção pode fechar várias exposições. Cada plano traz passo a passo em CLI, Terraform, CloudFormation e CDK.
+Ação sugerida: Usar os planos críticos e altos como backlog do próximo sprint e manter as correções em IaC.
+
+2. [Média] [NOVIDADE] Amazon GuardDuty now supports centralized management using AWS Organizations declarative policies (2026-10-01)
+https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-org-enablement-policies/
+Por que importa: O GuardDuty pode ser habilitado por política declarativa do AWS Organizations, cobrindo contas existentes e novas sem automação própria.
+Ação sugerida: Trocar os scripts de habilitação pela política declarativa e conferir a cobertura por conta e região.
+
+3. [Média] [NOVIDADE] GuardDuty Runtime Monitoring is now included in the AWS Security Hub Threat Analytics plan (2026-10-02)
+https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-runtime-monitoring/
+Por que importa: O Runtime Monitoring passou a fazer parte do plano Threat Analytics do Security Hub, sem cobrança separada do GuardDuty onde o Security Hub está ativo.
+Ação sugerida: Revisar a cobertura de runtime em EC2, EKS e Fargate e remover cobrança duplicada.
+
+4. [Média] [NOVIDADE] AWS Continuum for Penetration Testing now supports continuous penetration testing integrated directly into your CI/CD pipeline (2026-10-05)
+https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-penetration-testing/
+Por que importa: O AWS Continuum passa a rodar pentest dentro do pipeline de CI/CD (preview público), levando o teste de anual para a cada mudança.
+Ação sugerida: Fazer um piloto em um repositório não crítico e comparar com o último pentest externo.
+
+5. [Baixa] [NOVIDADE] AWS Private CA now provides detailed certificate issuance logs (2026-10-05)
+https://aws.amazon.com/about-aws/whats-new/2026/10/aws-private-ca-certificate-issuance-logs/
+Por que importa: O Private CA agora registra no CloudTrail cada certificado emitido, com conteúdo, CA emissora e solicitante. Evidência de auditoria da PKI sem coleta manual.
+Ação sugerida: Levar esses eventos para a trilha de auditoria e alertar sobre emissores inesperados.
+
+6. [Baixa] [NOVIDADE] AWS IAM Identity Center now supports network access controls for Identity Store (2026-10-05)
+https://aws.amazon.com/about-aws/whats-new/2026/10/aws-identity-store-network-controls/
+Por que importa: Dá para restringir por rede de origem as APIs da Identity Store e do SCIM, fechando um caminho de alteração de usuários e grupos vindo de fora da rede.
+Ação sugerida: Liberar só os ranges do provedor de identidade e da automação de provisionamento.
+
+TAMBÉM SAIU
+
+Novidades · AWS What's New:
+- AWS Client VPN now supports device posture assessment (2026-10-05) https://aws.amazon.com/about-aws/whats-new/2026/10/aws-client-vpn-device-posture/
+- Improve your secrets security posture with actionable recommendations in the AWS Secrets Manager console (2026-10-01) https://aws.amazon.com/about-aws/whats-new/2026/10/aws-secrets-manager-security-posture-recommendations
+- AWS Certificate Manager now supports ACME issuance through AWS PrivateLink (2026-10-06) https://aws.amazon.com/about-aws/whats-new/2026/10/AWS-Certificate-Manager-ACME-Privatelink
+- AgentCore Gateway supports private TLS certificates for VPC endpoints (2026-10-02) https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/
+- Announcing DNS analytics and insights for Route 53 Global Resolver and DNS Firewall (2026-10-01) https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-dns-analytics-insights/
+- AWS IAM Identity Center extends multi-Region support to more AWS Regions (2026-10-01) https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions
+
+Posts de blog · blogs de segurança da AWS:
+- Protect MCP Endpoints at the Edge with Amazon CloudFront and AWS WAF (2026-10-05) https://aws.amazon.com/blogs/networking-and-content-delivery/protect-mcp-endpoints-at-the-edge-with-amazon-cloudfront-and-aws-waf/
+
+TAMBÉM É BOM SABER: CVES E BOLETINS DE SEGURANÇA
+- CVE-2026-105811 | Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnABot on AWS | Important | 2026-10-07 | https://aws.amazon.com/security/security-bulletins/rss/2026-126-aws/
+- CVE-2026-105812, CVE-2026-106032 | Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF | Important | 2026-10-06 | https://aws.amazon.com/security/security-bulletins/rss/2026-127-aws/
+  Execução de código ao importar agente manipulado, mais SSRF. Atualizar o toolkit em dev e CI.
+- CVE-2026-104019 | OS command injection in the Studio Space startup script in Amazon SageMaker Distribution | Important | 2026-10-02 | https://aws.amazon.com/security/security-bulletins/rss/2026-125-aws/
+- CVE-2026-103956, CVE-2026-103957, CVE-2026-103958 | Issues in Loom for AWS | Important | 2026-10-02 | https://aws.amazon.com/security/security-bulletins/rss/2026-124-aws/
+- CVE-2026-103505 | Mount Option Injection in Amazon EFS CSI Driver | Important | 2026-10-02 | https://aws.amazon.com/security/security-bulletins/rss/2026-120-aws/
+- CVE-2026-104002 | Fail-open error handling in the data masking utility in Powertools for AWS Lambda (Python) | Important | 2026-10-01 | https://aws.amazon.com/security/security-bulletins/rss/2026-123-aws/
+  O mascaramento pode falhar aberto nas versões 3.6.0 a 3.34.0: campos sensíveis podem ir para logs.
+- CVE-2026-104020 | Uncontrolled recursion in the Ion reader in Amazon Ion Python | Important | 2026-10-01 | https://aws.amazon.com/security/security-bulletins/rss/2026-122-aws/
+- sem CVE [ATUALIZADO] | Dirty Frag and other issues in Amazon Linux kernels | n/d | 2026-10-06 | https://aws.amazon.com/security/security-bulletins/rss/2026-027-aws/
+
+Resumo gerado com apoio de IA a partir de fontes públicas da AWS. Confirme os detalhes na fonte indicada.
+Fontes: AWS What's New, blogs de segurança da AWS e AWS Security Bulletins.

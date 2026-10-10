@@ -1,0 +1,37 @@
+🛡️ 𝗔𝗪𝗦 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗪𝗲𝗲𝗸𝗹𝘆 𝗥𝗮𝗱𝗮𝗿
+📅 Week of 2026-09-30 to 2026-10-07
+
+A heavy week for AI tooling CVEs, plus practical wins in detection: GuardDuty by organization policy and grouped remediation in Security Hub.
+
+🚀 𝗛𝗶𝗴𝗵𝗹𝗶𝗴𝗵𝘁𝘀:
+
+🟠 𝗔𝗪𝗦 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗛𝘂𝗯 𝗶𝗻𝘁𝗿𝗼𝗱𝘂𝗰𝗲𝘀 𝗿𝗲𝗺𝗲𝗱𝗶𝗮𝘁𝗶𝗼𝗻 𝗽𝗹𝗮𝗻𝘀 𝘁𝗼 𝗽𝗿𝗶𝗼𝗿𝗶𝘁𝗶𝘇𝗲 𝗮𝗻𝗱 𝗳𝗶𝘅 𝘀𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗲𝘅𝗽𝗼𝘀𝘂𝗿𝗲𝘀
+Remediation plans group exposure findings by root cause, so one fix can close several exposures.
+
+🟠 𝗔𝗺𝗮𝘇𝗼𝗻 𝗚𝘂𝗮𝗿𝗱𝗗𝘂𝘁𝘆 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗰𝗲𝗻𝘁𝗿𝗮𝗹𝗶𝘇𝗲𝗱 𝗺𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 𝘂𝘀𝗶𝗻𝗴 𝗔𝗪𝗦 𝗢𝗿𝗴𝗮𝗻𝗶𝘇𝗮𝘁𝗶𝗼𝗻𝘀 𝗱𝗲𝗰𝗹𝗮𝗿𝗮𝘁𝗶𝘃𝗲 𝗽𝗼𝗹𝗶𝗰𝗶𝗲𝘀
+GuardDuty can now be enabled through an AWS Organizations declarative policy, which covers existing accounts and every new one without custom automation.
+
+🟠 𝗚𝘂𝗮𝗿𝗱𝗗𝘂𝘁𝘆 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 𝗠𝗼𝗻𝗶𝘁𝗼𝗿𝗶𝗻𝗴 𝗶𝘀 𝗻𝗼𝘄 𝗶𝗻𝗰𝗹𝘂𝗱𝗲𝗱 𝗶𝗻 𝘁𝗵𝗲 𝗔𝗪𝗦 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗛𝘂𝗯 𝗧𝗵𝗿𝗲𝗮𝘁 𝗔𝗻𝗮𝗹𝘆𝘁𝗶𝗰𝘀 𝗽𝗹𝗮𝗻
+Runtime Monitoring is now part of the Security Hub Threat Analytics plan, with no separate GuardDuty charge where Security Hub is on.
+
+🟠 𝗔𝗪𝗦 𝗖𝗼𝗻𝘁𝗶𝗻𝘂𝘂𝗺 𝗳𝗼𝗿 𝗣𝗲𝗻𝗲𝘁𝗿𝗮𝘁𝗶𝗼𝗻 𝗧𝗲𝘀𝘁𝗶𝗻𝗴 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗼𝘂𝘀 𝗽𝗲𝗻𝗲𝘁𝗿𝗮𝘁𝗶𝗼𝗻 𝘁𝗲𝘀𝘁𝗶𝗻𝗴 𝗶𝗻𝘁𝗲𝗴𝗿𝗮𝘁𝗲𝗱 𝗱𝗶𝗿𝗲𝗰𝘁𝗹𝘆 𝗶𝗻𝘁𝗼 𝘆𝗼𝘂𝗿 𝗖𝗜/𝗖𝗗 𝗽𝗶𝗽𝗲𝗹𝗶𝗻𝗲
+AWS Continuum can run penetration tests inside CI/CD pipelines (public preview), moving testing from yearly to every change.
+
+⚪ 𝗔𝗪𝗦 𝗣𝗿𝗶𝘃𝗮𝘁𝗲 𝗖𝗔 𝗻𝗼𝘄 𝗽𝗿𝗼𝘃𝗶𝗱𝗲𝘀 𝗱𝗲𝘁𝗮𝗶𝗹𝗲𝗱 𝗰𝗲𝗿𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗲 𝗶𝘀𝘀𝘂𝗮𝗻𝗰𝗲 𝗹𝗼𝗴𝘀
+Private CA now logs every issued certificate in CloudTrail, including content, issuing CA and requester.
+
+⚪ 𝗔𝗪𝗦 𝗜𝗔𝗠 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗖𝗲𝗻𝘁𝗲𝗿 𝗻𝗼𝘄 𝘀𝘂𝗽𝗽𝗼𝗿𝘁𝘀 𝗻𝗲𝘁𝘄𝗼𝗿𝗸 𝗮𝗰𝗰𝗲𝘀𝘀 𝗰𝗼𝗻𝘁𝗿𝗼𝗹𝘀 𝗳𝗼𝗿 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆 𝗦𝘁𝗼𝗿𝗲
+You can restrict the Identity Store and SCIM APIs by source network, closing a path for changing users and groups from outside your network.
+
+🧩 𝗡𝗲𝘄 𝗖𝗩𝗘𝘀 𝘁𝗼 𝗰𝗵𝗲𝗰𝗸:
+• CVE-2026-105811: Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnABot on AWS
+• CVE-2026-105812, CVE-2026-106032: Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF
+• CVE-2026-104019: OS command injection in the Studio Space startup script in Amazon SageMaker Distribution
+…and 4 more in the full report.
+
+📌 𝗔𝗹𝘀𝗼 𝗿𝗲𝗹𝗲𝗮𝘀𝗲𝗱:
+6 more news items and 1 blog post in the full report.
+
+💬 Are AI agent toolkits part of your patch process yet, or still outside it?
+
+#AWS #CloudSecurity #AWSSecurity #CVE #SecurityEngineering

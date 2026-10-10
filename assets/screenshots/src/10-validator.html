@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}
+html,body{margin:0;width:1024px;height:1024px;background:#efe9e2;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+body{display:flex;align-items:center;justify-content:center}
+.band{width:1024px;height:640px;padding:28px 34px;display:flex;align-items:center;justify-content:center;position:relative}
+.win{width:100%;height:100%;border-radius:12px;overflow:hidden;box-shadow:0 18px 40px rgba(28,25,22,.28);display:flex;flex-direction:column}
+.bar{height:34px;flex:none;display:flex;align-items:center;gap:7px;padding:0 14px;font-size:12px}
+.bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar span{margin-left:10px}
+.term{background:#15120f;color:#efe8e0}.term .bar{background:#262019;color:#a39a90}
+.term pre{margin:0;padding:18px 22px;font:13px/1.6 Menlo,Monaco,monospace;white-space:pre-wrap;overflow:hidden;flex:1}
+.c{color:#ef7d3c}.ok{color:#5cc08b}.err{color:#ff8f8f}.dim{color:#8a8178}.y{color:#e0c069}
+.light{background:#fff;color:#1c1916}.light .bar{background:#f1ece6;color:#6b635b}
+.url{flex:1;margin:0 70px;height:22px;border-radius:6px;background:#fff;color:#6b635b;font:12px/22px Menlo,monospace;text-align:center}
+.tag{position:absolute;right:46px;bottom:38px;font:600 11px Menlo,monospace;letter-spacing:.08em;color:#6b635b;background:#fff;border:1px solid #ddd5ca;border-radius:999px;padding:3px 10px}
+.cc{font:13px/1.55 Menlo,Monaco,monospace;padding:16px 22px;flex:1;overflow:hidden}
+.cc .u{background:#2a241e;border-left:2px solid #8a8178;padding:5px 10px;margin:9px 0}
+.cc .t{margin:8px 0}.cc .t b{color:#fff}.cc .o{color:#b8b0a6;white-space:pre;margin-left:4px}
+.cc .s{margin:8px 0;display:flex;gap:8px}.cc .s div{white-space:pre-wrap}
+.cc .wel{border:1px solid #ef7d3c;border-radius:6px;padding:6px 12px;display:inline-block;margin-bottom:6px}
+</style></head><body><div class="band"><div class="win term"><div class="bar"><i></i><i></i><i></i><span>aws-security-launch-radar-latam · zsh</span></div><pre><span class="c">$ python3 .claude/skills/security-launch-radar/scripts/validate_radar.py --radar examples/radar-invalid.json</span>
+<span class="err">INVALID RADAR (6 errors):</span>
+<span class="err"> - radar: unknown fields [&#x27;latam_spotlight&#x27;]</span>
+<span class="err"> - highlights[1]: unknown fields [&#x27;controls&#x27;]</span>
+<span class="err"> - highlights[2]: &#x27;4a93b9f8&#x27; is a bulletin; bulletins go only in &#x27;cves&#x27;</span>
+<span class="err"> - highlights[3]: &#x27;action&#x27; contains a URL; links come only from items.json</span>
+<span class="err"> - also_noted: item_id &#x27;deadbeef&#x27; not in items.json</span>
+<span class="err"> - cves[2]: item_id &#x27;4a93b9f8&#x27; repeated</span>
+
+<span class="dim"># nothing is rendered or sent; Claude fixes the draft and tries again (max 3)</span></pre></div><span class="tag">Validator · real output</span></div></body></html>

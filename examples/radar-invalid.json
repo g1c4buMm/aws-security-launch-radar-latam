@@ -1,0 +1,86 @@
+{
+ "headline": "A heavy week for AI tooling CVEs, plus practical wins in detection: GuardDuty by organization policy and grouped remediation in Security Hub.",
+ "highlights": [
+  {
+   "item_id": "95de98e6",
+   "priority": "medium",
+   "why_it_matters": "Remediation plans group exposure findings by root cause, so one fix can close several exposures. Each plan comes with step-by-step guidance in CLI, Terraform, CloudFormation and CDK.",
+   "action": "Use the critical and high plans as next sprint's backlog and keep the fixes in IaC.",
+   "controls": [
+    "PCI-REQ6"
+   ]
+  },
+  {
+   "item_id": "4a93b9f8",
+   "priority": "medium",
+   "why_it_matters": "GuardDuty can now be enabled through an AWS Organizations declarative policy, which covers existing accounts and every new one without custom automation.",
+   "action": "Replace enablement scripts with the declarative policy and check coverage per account and Region."
+  },
+  {
+   "item_id": "d991a808",
+   "priority": "medium",
+   "why_it_matters": "Runtime Monitoring is now part of the Security Hub Threat Analytics plan, with no separate GuardDuty charge where Security Hub is on.",
+   "action": "See https://example.com for details."
+  },
+  {
+   "item_id": "13cd62b8",
+   "priority": "medium",
+   "why_it_matters": "AWS Continuum can run penetration tests inside CI/CD pipelines (public preview), moving testing from yearly to every change.",
+   "action": "Pilot it on a non-critical repository and compare findings with your last external pentest."
+  },
+  {
+   "item_id": "6043373c",
+   "priority": "low",
+   "why_it_matters": "Private CA now logs every issued certificate in CloudTrail, including content, issuing CA and requester. Audit evidence for your PKI without manual collection.",
+   "action": "Route these events to your audit trail and alert on unexpected issuers."
+  },
+  {
+   "item_id": "d7f65eff",
+   "priority": "low",
+   "why_it_matters": "You can restrict the Identity Store and SCIM APIs by source network, closing a path for changing users and groups from outside your network.",
+   "action": "Allow only your identity provider and provisioning automation ranges."
+  }
+ ],
+ "also_noted": [
+  "8aa5a39c",
+  "1162b271",
+  "eb43f3de",
+  "a5630b33",
+  "3ea9c1fe",
+  "016f948c",
+  "1db28565",
+  "deadbeef"
+ ],
+ "cves": [
+  {
+   "item_id": "3fe0a88c"
+  },
+  {
+   "item_id": "4a93b9f8",
+   "note": "Code execution when importing a crafted agent, plus SSRF. Update the toolkit in dev and CI."
+  },
+  {
+   "item_id": "994f5027"
+  },
+  {
+   "item_id": "7ea27758"
+  },
+  {
+   "item_id": "f1cddc55"
+  },
+  {
+   "item_id": "61c44aa8",
+   "note": "Masking can fail open in versions 3.6.0 to 3.34.0: sensitive fields may reach logs."
+  },
+  {
+   "item_id": "ec33662f"
+  },
+  {
+   "item_id": "36350240"
+  }
+ ],
+ "latam_spotlight": {
+  "item_id": "6043373c",
+  "text": "Not part of the MVP."
+ }
+}

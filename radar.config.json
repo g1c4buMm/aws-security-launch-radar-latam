@@ -1,0 +1,13 @@
+{
+ "language": "en",
+ "delivery": {
+  "email": {
+   "enabled": false,
+   "to": []
+  },
+  "slack": {
+   "enabled": false,
+   "webhook_env": "SLACK_WEBHOOK_URL"
+  }
+ }
+}

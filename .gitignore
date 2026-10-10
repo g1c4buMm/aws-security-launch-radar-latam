@@ -1,0 +1,16 @@
+# System
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+
+# Run outputs: generated every week, never committed
+out/
+
+# Secrets never enter the repository
+.env
+*.secret
+
+# Local drafts and mockups
+mockup/
+*.private.*
