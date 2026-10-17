@@ -18,7 +18,8 @@ claude
 | 7 | Render | `render.py` formats the email, the Slack message and a LinkedIn post | `out/email.html`, `out/email.txt`, `out/slack.json`, `out/linkedin.txt`, `out/linkedin.html` |
 | 8 | Preview | Claude shows the result and **asks before sending** | |
 | 9 | Deliver | Gmail connector sends the email; `send_slack.py` posts to Slack | |
-| 10 | Summary | Week covered, items read, what was sent and any failure | |
+| 10 | Publish | `export_tracker.py` writes the week in the tracker format; `deploy.sh` merges, commits and pushes it to your tracker site (only with `tracker.enabled`, asks before pushing) | `out/tracker-week.json`, `data/weeks/wNN.json` |
+| 11 | Summary | Week covered, items read, what was sent, launches added to the site and any failure | |
 
 Open `out/email.html` in a browser to see the email exactly as it will arrive.
 
@@ -42,6 +43,12 @@ Structure: title and week, headline, highlights (bold title and why it matters),
 ## New versus updated bulletins
 
 The bulletins feed dates each item by its last update, so AWS can resurface old bulletins with a new date. Bulletin IDs are sequential: `fetch_feeds.py` marks a bulletin as new only if its number is higher than every bulletin dated before the week. The others are marked `"updated": true`.
+
+## The tracker site
+
+If you also keep an [AWS Security Launch Tracker](https://github.com/g1c4buMm/aws-security-tracker) site, the radar can feed it every week. `export_tracker.py` takes only What's New launches from `out/items.json` and writes one line per launch: date, official title, official link, pillar (`threat`, `identity`, `posture`, `network`, `data`, `ai`, from the catalog domain), service and the first sentence of the official summary. Nothing in it is written by the model. The tracker's own `add_week.py` skips launches that are already on the site, so running the radar twice in a week is safe.
+
+The push uses your own git credentials. In a routine, add the tracker repository to the routine's repositories and set `tracker.repo_path` to where it is cloned.
 
 ## Scheduled mode
 

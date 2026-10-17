@@ -9,5 +9,9 @@
    "enabled": false,
    "webhook_env": "SLACK_WEBHOOK_URL"
   }
+ },
+ "tracker": {
+  "enabled": false,
+  "repo_path": "../aws-security-tracker"
  }
 }

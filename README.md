@@ -50,8 +50,9 @@ Three curator agents work in parallel, an independent reviewer agent checks thei
 | 4 | **Validator before every send** | Blocks invented items, URLs in text, unknown fields and bulletins in the wrong place |
 | 5 | **NEWS, BLOG and UPDATED tags** | You see at a glance what is a launch, a blog post or an old bulletin AWS updated |
 | 6 | **Email, Slack and a LinkedIn post** | Gmail connector and Slack webhook after a preview, plus a ready-to-paste LinkedIn post with bold headings, even with no connector at all |
-| 7 | **Weekly routine** | Runs every Monday in the cloud, without questions, and reports what it did |
-| 8 | **Examples and demo** | Real rendered reports in three languages in `examples/`, a 20-minute demo in `demo/` |
+| 7 | **Tracker site update** | `export_tracker.py` adds the week's launches to your AWS Security Launch Tracker site and pushes it, so GitHub Pages republishes |
+| 8 | **Weekly routine** | Runs every Monday in the cloud, without questions, and reports what it did |
+| 9 | **Examples and demo** | Real rendered reports in three languages in `examples/`, a 20-minute demo in `demo/` |
 
 ## What you need
 
@@ -154,6 +155,7 @@ claude
 | Render | `render.py` writes `out/email.html`, `out/email.txt` and `out/slack.json` |
 | Preview | Claude shows the result and **asks before sending** |
 | Deliver | Gmail connector sends the email; `send_slack.py` posts to Slack |
+| Publish | `export_tracker.py` writes the week for the tracker site; `deploy.sh` in the tracker repository commits and pushes it (optional) |
 
 ![Step 6: the radar running in Claude Code](assets/screenshots/06-run.png)
 
@@ -221,6 +223,7 @@ flowchart TD
     V -- "invalid: nothing is sent, Claude fixes and retries (max 3)" --> L
     R --> G["Gmail connector"]
     R --> S["send_slack.py<br/>Slack Incoming Webhook"]
+    V -- valid --> T["export_tracker.py<br/>data/weeks/wNN.json<br/>tracker site, GitHub Pages"]
     classDef ai fill:#fff4e5,stroke:#ff9900,color:#232f3e
     classDef gate fill:#fef3f2,stroke:#b42318,color:#232f3e
     class L,C1,C2,C3,RV ai

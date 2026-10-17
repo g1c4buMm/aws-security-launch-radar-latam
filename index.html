@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Security Weekly Radar</title>
-<meta name="description" content="A Claude Code skill that reads the last 7 days of AWS security news and sends one short review, by email and Slack, in English, Portuguese or Spanish.">
+<meta name="description" content="A Claude Code skill where three curator agents and an independent reviewer read the last 7 days of AWS security news, send one short review by email and Slack, and update your launch tracker site.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -57,8 +57,11 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:32px;font:500 .8rem var(--mono);color:var(--muted)}
 .facts span::before{content:"▸ ";color:var(--accent)}
 
-.cycle{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:32px}
-@media(max-width:760px){.cycle{grid-template-columns:1fr}}
+.cycle{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:32px}
+@media(max-width:900px){.cycle{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.cycle{grid-template-columns:1fr}}
+.lanes{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.lanes i{font:500 .68rem var(--mono);font-style:normal;padding:2px 6px;border-radius:4px;background:var(--surface);border:1px solid var(--accent);color:var(--accent)}
 .cycle div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
 .cycle .ai{border-color:var(--accent);background:color-mix(in srgb,var(--accent-soft) 55%,var(--surface))}
 .cycle small{font:500 .7rem var(--mono);color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
@@ -70,7 +73,7 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .shot figcaption{font-size:.85rem;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line)}
 
 .rail{margin-top:36px;display:grid;gap:44px}
-.step{display:grid;grid-template-columns:44px 1fr;gap:18px}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px}
 .num{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font:600 .95rem var(--mono)}
 .step h3{margin-top:4px}
 .step p{color:var(--muted);margin-top:6px;max-width:66ch}
@@ -123,21 +126,22 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
 ██║  ██║██║  ██║██████╔╝██║  ██║██║  ██║
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝</pre>
 <h1>AWS shipped it. Claude read it. Your team got the brief.</h1>
-<p class="lead">A Claude Code skill that reads the last 7 days of AWS security news and sends one short review, by email and Slack, in English, Portuguese or Spanish. The agent chooses and explains; the scripts guarantee the facts.</p>
+<p class="lead">A Claude Code skill that reads the last 7 days of AWS security news with three curator agents in parallel and an independent reviewer, then sends one short review by email and Slack, in English, Portuguese or Spanish, and adds the week to your launch tracker site. The agents choose and explain; the scripts guarantee the facts.</p>
 <div class="ctas"><a class="btn primary" href="https://github.com/g1c4buMm/aws-security-launch-radar-latam">Get it on GitHub</a><a class="btn" href="#setup">Set it up in 15 minutes</a><a class="btn" href="examples/email-en.html">See a real weekly email</a><a class="btn" href="demo/timelapse.html">Watch the install timelapse</a></div>
-<div class="facts"><span>runs on Claude Code</span><span>reports in en · pt-BR · es</span><span>Python standard library only</span><span>MIT-0</span></div>
+<div class="facts"><span>runs on Claude Code</span><span>3 curator agents + 1 reviewer</span><span>reports in en · pt-BR · es</span><span>Python standard library only</span><span>MIT-0</span></div>
 </div></section>
 
 <section id="cycle" aria-labelledby="cycle-t"><div class="wrap">
 <p class="eyebrow">How it works</p>
-<h2 id="cycle-t">Five steps. Only one of them writes.</h2>
-<p class="lead">Titles, dates and links come straight from AWS. Claude writes the short texts, and a validator checks them before anything is rendered or sent.</p>
+<h2 id="cycle-t">Six steps. Only the agents write, and a script checks them.</h2>
+<p class="lead">Titles, dates and links come straight from AWS. Three Claude subagents curate in parallel, a fourth that did not write the radar reviews it, and a validator checks it again before anything is rendered, sent or published.</p>
 <div class="cycle">
  <div><small>1 · script</small><b>Collect</b><p>Last 7 days of What's New, security blogs and bulletins</p></div>
- <div class="ai"><small>2 · Claude</small><b>Curate</b><p>3 to 7 highlights and short texts in your language</p></div>
- <div><small>3 · script</small><b>Validate</b><p>Only real items, no links in text, bulletins in their place</p></div>
- <div><small>4 · script</small><b>Render</b><p>Email in HTML and text, plus a Slack message</p></div>
- <div><small>5 · connector</small><b>Deliver</b><p>Gmail connector and Slack webhook, after a preview</p></div>
+ <div class="ai"><small>2 · 3 agents</small><b>Curate</b><p>radar-curator, in parallel, one lane each</p><span class="lanes"><i>threats</i><i>identity</i><i>data-network</i></span></div>
+ <div class="ai"><small>3 · 1 agent</small><b>Review</b><p>radar-reviewer checks every claim against the items</p></div>
+ <div><small>4 · script</small><b>Validate</b><p>Only real items, no links in text, bulletins in their place</p></div>
+ <div><small>5 · script</small><b>Render</b><p>Email, Slack message and a LinkedIn post</p></div>
+ <div><small>6 · connectors</small><b>Deliver</b><p>Gmail and Slack after a preview; the week pushed to your tracker site</p></div>
 </div>
 <figure class="shot"><img src="assets/screenshots/07-email.png" alt="The weekly email with highlights tagged NEWS" loading="lazy"><figcaption>A real email from the week of September 30, 2026: headline, highlights, also released and the CVE table.</figcaption></figure>
 <div class="tags"><span class="tag t-news">NEWS</span><span class="tag t-blog">BLOG</span><span class="tag t-upd">UPDATED</span></div>
@@ -174,6 +178,8 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
  <div class="step"><span class="num">7</span><div><h3>Schedule it every Monday</h3><p>A Claude Code routine runs it in scheduled mode: no questions, sends on its own, and explains any failure in the run summary.</p>
   <pre class="cmd">Use the security-launch-radar skill in scheduled mode.</pre>
   <figure class="shot"><img src="assets/screenshots/09-schedule.png" alt="Weekly routine (illustration)" loading="lazy"><figcaption>Illustration.</figcaption></figure></div></div>
+ <div class="step"><span class="num">8</span><div><h3>Keep your tracker site current (optional)</h3><p>Point the radar to your clone of the AWS Security Launch Tracker. Each run writes the week's launches to <code>data/weeks/wNN.json</code>, commits and pushes, and GitHub Pages republishes. Interactive runs ask before pushing.</p>
+  <pre class="cmd"><span>$</span> python3 setup.py --language pt-BR --email security@example.com --tracker ../aws-security-tracker</pre></div></div>
 </div></div></section>
 
 <section aria-labelledby="lang-t"><div class="wrap">
@@ -193,7 +199,8 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
  <tbody><tr><td>Titles, dates, links</td><td>AWS sources, via <code>fetch_feeds.py</code></td></tr>
  <tr><td>Severity, CVE IDs</td><td>The bulletin itself</td></tr>
  <tr><td>NEWS, BLOG, UPDATED</td><td>The item's source and bulletin number</td></tr>
- <tr><td>Headline, why it matters, action</td><td>Claude, checked by <code>validate_radar.py</code></td></tr></tbody></table></div>
+ <tr><td>Headline, why it matters, action</td><td>The curator agents, checked by <code>radar-reviewer</code> and <code>validate_radar.py</code></td></tr>
+ <tr><td>Tracker site entries</td><td>AWS What's New, via <code>export_tracker.py</code>; nothing written by the model</td></tr></tbody></table></div>
 <figure class="shot"><img src="assets/screenshots/10-validator.png" alt="The validator rejecting a draft with six errors" loading="lazy"><figcaption>A draft that breaks the rules on purpose. The CI keeps it rejected.</figcaption></figure>
 </div></section>
 
