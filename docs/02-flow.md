@@ -46,7 +46,7 @@ The bulletins feed dates each item by its last update, so AWS can resurface old 
 
 ## The tracker site
 
-If you also keep an [AWS Security Launch Tracker](https://github.com/g1c4buMm/aws-security-tracker) site, the radar can feed it every week. `export_tracker.py` takes only What's New launches from `out/items.json` and writes one line per launch: date, official title, official link, pillar (`threat`, `identity`, `posture`, `network`, `data`, `ai`, from the catalog domain), service and the first sentence of the official summary. Nothing in it is written by the model. The tracker's own `add_week.py` skips launches that are already on the site, so running the radar twice in a week is safe.
+If you also keep an [AWS Security Launch Tracker](https://github.com/g1c4buMm/aws-security-tracker) site, the radar can feed it every week. `export_tracker.py` takes only What's New launches from `out/items.json` and writes one line per launch: date, official title, official link, pillar (`threat`, `identity`, `posture`, `network`, `data`, `ai`, from the catalog domain), service and the first sentence of the official summary. Nothing in it is written by the model. It also writes `out/tracker-highlights.json`, the week's validated highlights (headline, priority, why it matters, action), which the site shows at the top as "This week's highlights", with the title, date and link taken from the official item. The tracker's own `add_week.py` skips launches that are already on the site, so running the radar twice in a week is safe.
 
 The push uses your own git credentials. In a routine, add the tracker repository to the routine's repositories and set `tracker.repo_path` to where it is cloned.
 
