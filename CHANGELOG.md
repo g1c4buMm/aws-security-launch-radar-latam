@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 (2026-10-17)
+
+- **Multi-agent curation**: three `radar-curator` subagents (threats, identity, data-network) curate in parallel and write `out/drafts/`; Claude merges them into `out/radar.json`.
+- **Independent review**: the `radar-reviewer` subagent, which did not write the radar, checks every claim against the items and writes `out/review.json` before `validate_radar.py` runs.
+- **Visible progress**: the skill prints one status line per step, so a run can be followed or recorded.
+- Falls back to single-agent curation when subagents are not available.
+
 ## 0.1.0 (2026-10-10)
 
 - **Weekly security review**: the last 7 days of AWS What's New, AWS security blogs and AWS Security Bulletins, curated by Claude Code through the `security-launch-radar` skill.

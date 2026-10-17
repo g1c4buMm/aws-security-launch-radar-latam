@@ -3,6 +3,7 @@
 | Feature | Used for | Where |
 |---|---|---|
 | **Project skills** | Claude Code loads the radar instructions when you ask for the radar | `.claude/skills/security-launch-radar/SKILL.md` |
+| **Subagents** | Three `radar-curator` agents curate in parallel; `radar-reviewer` checks the merged radar | `.claude/agents/` |
 | **Bash tool** | Running the four scripts | `skills/security-launch-radar/scripts/` |
 | **Gmail connector** | Sending the email from your Gmail address | [claude.ai/customize/connectors](https://claude.ai/customize/connectors) |
 | **Routines** | Running the radar every Monday in the cloud | `/schedule` or [claude.ai/code/routines](https://claude.ai/code/routines) |

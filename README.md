@@ -38,19 +38,20 @@ The **AWS Security Weekly Radar** is a Claude Code skill that reads the last 7 d
 - **also released**: the rest of the relevant news, split into **NEWS** and **BLOG**,
 - **good to know**: every new CVE and security bulletin of the week in one compact table.
 
-The agent chooses and explains. The scripts guarantee the facts: titles, dates and links come only from official AWS sources, and **nothing is sent if validation fails**.
+Three curator agents work in parallel, an independent reviewer agent checks their work, and the scripts guarantee the facts: titles, dates and links come only from official AWS sources, and **nothing is sent if validation fails**.
 
 ## Features
 
 | | Feature | Why it matters |
 |---|---|---|
 | 1 | **One request: `run the security radar`** | The whole weekly cycle in Claude Code: collect, curate, validate, render, send |
-| 2 | **Three report languages** | `en`, `pt-BR` or `es`, chosen once at setup |
-| 3 | **Validator before every send** | Blocks invented items, URLs in text, unknown fields and bulletins in the wrong place |
-| 4 | **NEWS, BLOG and UPDATED tags** | You see at a glance what is a launch, a blog post or an old bulletin AWS updated |
-| 5 | **Email, Slack and a LinkedIn post** | Gmail connector and Slack webhook after a preview, plus a ready-to-paste LinkedIn post with bold headings, even with no connector at all |
-| 6 | **Weekly routine** | Runs every Monday in the cloud, without questions, and reports what it did |
-| 7 | **Examples and demo** | Real rendered reports in three languages in `examples/`, a 20-minute demo in `demo/` |
+| 2 | **Multi-agent curation** | Three `radar-curator` subagents curate threats, identity and data-network in parallel; a `radar-reviewer` subagent that did not write the radar checks it before the validator |
+| 3 | **Three report languages** | `en`, `pt-BR` or `es`, chosen once at setup |
+| 4 | **Validator before every send** | Blocks invented items, URLs in text, unknown fields and bulletins in the wrong place |
+| 5 | **NEWS, BLOG and UPDATED tags** | You see at a glance what is a launch, a blog post or an old bulletin AWS updated |
+| 6 | **Email, Slack and a LinkedIn post** | Gmail connector and Slack webhook after a preview, plus a ready-to-paste LinkedIn post with bold headings, even with no connector at all |
+| 7 | **Weekly routine** | Runs every Monday in the cloud, without questions, and reports what it did |
+| 8 | **Examples and demo** | Real rendered reports in three languages in `examples/`, a 20-minute demo in `demo/` |
 
 ## What you need
 
@@ -147,7 +148,8 @@ claude
 | Stage | What happens |
 |---|---|
 | Collect | `fetch_feeds.py` writes `out/items.json` with the week's security items |
-| Curate | Claude writes `out/radar.json` in your language, citing items only by ID |
+| Curate | Three `radar-curator` subagents write `out/drafts/` in parallel; Claude merges them into `out/radar.json` |
+| Review | The `radar-reviewer` subagent checks the radar against the items and writes `out/review.json` |
 | Validate | `validate_radar.py` checks the draft; Claude fixes it if needed, up to 3 times |
 | Render | `render.py` writes `out/email.html`, `out/email.txt` and `out/slack.json` |
 | Preview | Claude shows the result and **asks before sending** |
@@ -209,19 +211,23 @@ flowchart TD
     A["AWS What's New API"] --> F
     B["AWS blogs API"] --> F
     C["Security Bulletins RSS"] --> F
-    F["fetch_feeds.py<br/>out/items.json<br/>last 7 days, security items only, untrusted text"] --> L
-    L["Claude (skill)<br/>out/radar.json<br/>only item IDs and short texts, in your language"] --> V
+    F["fetch_feeds.py<br/>out/items.json<br/>last 7 days, security items only, untrusted text"] --> C1 & C2 & C3
+    C1["radar-curator<br/>threats"] --> L
+    C2["radar-curator<br/>identity"] --> L
+    C3["radar-curator<br/>data-network"] --> L
+    L["Claude (skill)<br/>merges into out/radar.json<br/>only item IDs and short texts, in your language"] --> RV
+    RV["radar-reviewer<br/>independent check<br/>out/review.json"] --> V
     V{"validate_radar.py"} -- valid --> R["render.py<br/>email.html · email.txt · slack.json"]
     V -- "invalid: nothing is sent, Claude fixes and retries (max 3)" --> L
     R --> G["Gmail connector"]
     R --> S["send_slack.py<br/>Slack Incoming Webhook"]
     classDef ai fill:#fff4e5,stroke:#ff9900,color:#232f3e
     classDef gate fill:#fef3f2,stroke:#b42318,color:#232f3e
-    class L ai
+    class L,C1,C2,C3,RV ai
     class V gate
 ```
 
-Claude is the only step that writes text, and the validator checks it before anything is rendered or sent.
+The agents are the only steps that write text. The reviewer checks it as an editor would, and the validator checks it again before anything is rendered or sent.
 
 ## Kit structure
 
@@ -235,6 +241,7 @@ aws-security-launch-radar-latam/
 ├── radar.config.json             your settings (keep your copy private)
 ├── skills/                       the skill: SKILL.md, scripts and catalog (single source)
 ├── .claude/skills/               copy that Claude Code discovers, generated by the build
+├── .claude/agents/               radar-curator and radar-reviewer subagents
 ├── templates/                    blank radar.config.json and radar.json
 ├── examples/                     one real week, sample radars and rendered reports in 3 languages
 ├── demo/                         20-minute script, opening deck and install timelapse

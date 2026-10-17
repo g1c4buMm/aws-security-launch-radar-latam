@@ -11,12 +11,14 @@ claude
 |---|---|---|---|
 | 1 | Config | Claude reads the language and delivery settings | `radar.config.json` |
 | 2 | Collect | `fetch_feeds.py` reads the last 7 days | `out/items.json` |
-| 3 | Curate | Claude writes the radar in your language, citing items only by ID | `out/radar.json` |
-| 4 | Validate | `validate_radar.py` checks the radar; on failure Claude fixes it, up to 3 attempts | |
-| 5 | Render | `render.py` formats the email, the Slack message and a LinkedIn post | `out/email.html`, `out/email.txt`, `out/slack.json`, `out/linkedin.txt`, `out/linkedin.html` |
-| 6 | Preview | Claude shows the result and **asks before sending** | |
-| 7 | Deliver | Gmail connector sends the email; `send_slack.py` posts to Slack | |
-| 8 | Summary | Week covered, items read, what was sent and any failure | |
+| 3 | Curate | Three `radar-curator` subagents, in parallel: threats, identity, data-network | `out/drafts/*.json` |
+| 4 | Merge | Claude joins the drafts into the radar in your language, citing items only by ID | `out/radar.json` |
+| 5 | Review | The `radar-reviewer` subagent checks the radar against the items; Claude applies its fixes | `out/review.json` |
+| 6 | Validate | `validate_radar.py` checks the radar; on failure Claude fixes it, up to 3 attempts | |
+| 7 | Render | `render.py` formats the email, the Slack message and a LinkedIn post | `out/email.html`, `out/email.txt`, `out/slack.json`, `out/linkedin.txt`, `out/linkedin.html` |
+| 8 | Preview | Claude shows the result and **asks before sending** | |
+| 9 | Deliver | Gmail connector sends the email; `send_slack.py` posts to Slack | |
+| 10 | Summary | Week covered, items read, what was sent and any failure | |
 
 Open `out/email.html` in a browser to see the email exactly as it will arrive.
 
