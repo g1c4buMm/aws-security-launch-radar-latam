@@ -4,7 +4,7 @@
 Writes radar.config.json. Run interactively or with flags:
   python3 setup.py
   python3 setup.py --language es --email sec@example.com,cto@example.com --slack
-  python3 setup.py --language pt-BR --tracker ../aws-security-tracker
+  python3 setup.py --language pt-BR --tracker ../aws-security-tracker --tracker-url https://example.com/tracker/ --kit-page
 """
 import argparse
 import json
@@ -34,6 +34,8 @@ def main():
     ap.add_argument("--language", choices=sorted(LANGUAGES.values()))
     ap.add_argument("--email", help="comma-separated recipients")
     ap.add_argument("--slack", action="store_true", help="also post to Slack (webhook from SLACK_WEBHOOK_URL)")
+    ap.add_argument("--tracker-url", metavar="URL", help="public address of the tracker site, linked from the kit page")
+    ap.add_argument("--kit-page", action="store_true", help="refresh the 'This week on the radar' block of index.html and push it")
     ap.add_argument("--tracker", metavar="PATH", help="local clone of your aws-security-tracker site; each run adds the week and pushes it")
     args = ap.parse_args()
 
@@ -48,6 +50,8 @@ def main():
         emails = parse_emails(ask("Email recipients (comma-separated, empty to skip)"))
         slack = ask("Post to Slack too? (y/n)", "n").lower().startswith("y")
         args.tracker = ask("Path to your aws-security-tracker clone (empty to skip)")
+        args.tracker_url = ask("Public address of the tracker site (empty to skip)") if args.tracker else ""
+        args.kit_page = ask("Refresh and push the kit page every week? (y/n)", "n").lower().startswith("y")
 
     config = {
         "language": language,
@@ -55,7 +59,8 @@ def main():
             "email": {"enabled": bool(emails), "to": emails},
             "slack": {"enabled": slack, "webhook_env": "SLACK_WEBHOOK_URL"},
         },
-        "tracker": {"enabled": bool(args.tracker), "repo_path": args.tracker or "../aws-security-tracker"},
+        "tracker": {"enabled": bool(args.tracker), "repo_path": args.tracker or "../aws-security-tracker", "site_url": args.tracker_url or ""},
+        "kit_page": {"enabled": bool(args.kit_page)},
     }
     with open(CONFIG, "w", encoding="utf-8") as f:
         json.dump(config, f, ensure_ascii=False, indent=1)

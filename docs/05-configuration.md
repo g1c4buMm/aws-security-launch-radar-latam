@@ -10,7 +10,7 @@ The setup asks four questions: report language, email recipients, whether to pos
 
 ```
 python3 setup.py --language es --email security@example.com,ciso@example.com --slack
-python3 setup.py --language pt-BR --email security@example.com --tracker ../aws-security-tracker
+python3 setup.py --language pt-BR --email security@example.com --tracker ../aws-security-tracker --tracker-url https://example.com/tracker/ --kit-page
 ```
 
 | Language | `--language` | Report title |
@@ -30,7 +30,8 @@ The whole report arrives in the chosen language: section titles, priorities, tag
   "email": {"enabled": true, "to": ["security@example.com"]},
   "slack": {"enabled": true, "webhook_env": "SLACK_WEBHOOK_URL"}
  },
- "tracker": {"enabled": true, "repo_path": "../aws-security-tracker"}
+ "tracker": {"enabled": true, "repo_path": "../aws-security-tracker", "site_url": "https://example.com/tracker/"},
+ "kit_page": {"enabled": true}
 }
 ```
 
@@ -42,5 +43,7 @@ The whole report arrives in the chosen language: section titles, priorities, tag
 | `delivery.slack.webhook_env` | Name of the environment variable that holds the webhook URL |
 | `tracker.enabled` | Add the week to your tracker site and push it |
 | `tracker.repo_path` | Local clone of the tracker repository, relative to this folder or absolute |
+| `tracker.site_url` | Public address of the tracker site, linked from the kit page |
+| `kit_page.enabled` | Refresh the "This week on the radar" block of `index.html` and push it, on the `main` branch |
 
 A blank copy is in `templates/radar.config.json`. Rendered examples in each language are in `examples/`.

@@ -6,6 +6,8 @@
 - **Independent review**: the `radar-reviewer` subagent, which did not write the radar, checks every claim against the items and writes `out/review.json` before `validate_radar.py` runs.
 - **Visible progress**: the skill prints one status line per step, so a run can be followed or recorded.
 - **Tracker site update**: `export_tracker.py` writes the week's launches in the format of the AWS Security Launch Tracker site; with `tracker.enabled`, the skill runs the tracker's `deploy.sh` to commit and push it, and GitHub Pages republishes. New `setup.py --tracker` flag.
+- **Kit page refresh**: `update_kit_page.py` rewrites the "This week on the radar" block of `index.html`, pushed on `main` with `kit_page.enabled`.
+- **One confirmation**: in interactive mode a single yes covers email, Slack, the tracker site and the kit page.
 - Falls back to single-agent curation when subagents are not available.
 
 ## 0.1.0 (2026-10-10)

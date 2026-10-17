@@ -12,6 +12,10 @@
  },
  "tracker": {
   "enabled": false,
-  "repo_path": "../aws-security-tracker"
+  "repo_path": "../aws-security-tracker",
+  "site_url": ""
+ },
+ "kit_page": {
+  "enabled": false
  }
 }

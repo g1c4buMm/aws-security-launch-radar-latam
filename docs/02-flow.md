@@ -16,9 +16,9 @@ claude
 | 5 | Review | The `radar-reviewer` subagent checks the radar against the items; Claude applies its fixes | `out/review.json` |
 | 6 | Validate | `validate_radar.py` checks the radar; on failure Claude fixes it, up to 3 attempts | |
 | 7 | Render | `render.py` formats the email, the Slack message and a LinkedIn post | `out/email.html`, `out/email.txt`, `out/slack.json`, `out/linkedin.txt`, `out/linkedin.html` |
-| 8 | Preview | Claude shows the result and **asks before sending** | |
+| 8 | Preview | Claude shows the result and **asks once** before sending and publishing | |
 | 9 | Deliver | Gmail connector sends the email; `send_slack.py` posts to Slack | |
-| 10 | Publish | `export_tracker.py` writes the week in the tracker format; `deploy.sh` merges, commits and pushes it to your tracker site (only with `tracker.enabled`, asks before pushing) | `out/tracker-week.json`, `data/weeks/wNN.json` |
+| 10 | Publish | `export_tracker.py` and the tracker's `deploy.sh` push the week to your tracker site (`tracker.enabled`); `update_kit_page.py` refreshes the "This week on the radar" block of `index.html` and pushes it (`kit_page.enabled`, `main` branch only) | `data/weeks/wNN.json`, `data/highlights/wNN.json`, `index.html` |
 | 11 | Summary | Week covered, items read, what was sent, launches added to the site and any failure | |
 
 Open `out/email.html` in a browser to see the email exactly as it will arrive.

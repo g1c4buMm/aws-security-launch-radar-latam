@@ -50,7 +50,7 @@ Three curator agents work in parallel, an independent reviewer agent checks thei
 | 4 | **Validator before every send** | Blocks invented items, URLs in text, unknown fields and bulletins in the wrong place |
 | 5 | **NEWS, BLOG and UPDATED tags** | You see at a glance what is a launch, a blog post or an old bulletin AWS updated |
 | 6 | **Email, Slack and a LinkedIn post** | Gmail connector and Slack webhook after a preview, plus a ready-to-paste LinkedIn post with bold headings, even with no connector at all |
-| 7 | **Tracker site update** | `export_tracker.py` adds the week's launches to your AWS Security Launch Tracker site and pushes it, so GitHub Pages republishes |
+| 7 | **Tracker site and kit page update** | `export_tracker.py` adds the week's launches and highlights to your AWS Security Launch Tracker site; `update_kit_page.py` refreshes this kit's page. One confirmation, then both are pushed and GitHub Pages republishes |
 | 8 | **Weekly routine** | Runs every Monday in the cloud, without questions, and reports what it did |
 | 9 | **Examples and demo** | Real rendered reports in three languages in `examples/`, a 20-minute demo in `demo/` |
 
@@ -153,7 +153,7 @@ claude
 | Review | The `radar-reviewer` subagent checks the radar against the items and writes `out/review.json` |
 | Validate | `validate_radar.py` checks the draft; Claude fixes it if needed, up to 3 times |
 | Render | `render.py` writes `out/email.html`, `out/email.txt` and `out/slack.json` |
-| Preview | Claude shows the result and **asks before sending** |
+| Preview | Claude shows the result and **asks once** before sending and publishing |
 | Deliver | Gmail connector sends the email; `send_slack.py` posts to Slack |
 | Publish | `export_tracker.py` writes the week for the tracker site; `deploy.sh` in the tracker repository commits and pushes it (optional) |
 

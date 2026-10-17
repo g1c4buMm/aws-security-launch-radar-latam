@@ -13,9 +13,9 @@ Paths are relative to the repository root. `SKILL_DIR` = `.claude/skills/securit
 
 ## Modes
 
-- **Setup** ("set up the radar", "configurar o radar"): ask, in one round, for the report language (English, Português, Español), email recipients and whether to post to Slack. Then run `python3 setup.py --language <en|pt-BR|es> --email <a@example.com,b@example.com> [--slack] [--tracker <path>]`. Never write a webhook URL to any file.
-- **Interactive** (default): run everything, show the preview and **ask before sending**.
-- **Scheduled** (the prompt says "scheduled mode"): run everything and send without asking. Never ask questions in this mode; if something is missing, generate the files, do not send, and explain in the final summary.
+- **Setup** ("set up the radar", "configurar o radar"): ask, in one round, for the report language (English, Português, Español), email recipients and whether to post to Slack. Then run `python3 setup.py --language <en|pt-BR|es> --email <a@example.com,b@example.com> [--slack] [--tracker <path>] [--tracker-url <url>] [--kit-page]`. Never write a webhook URL to any file.
+- **Interactive** (default): run everything, show the preview and **ask once**: "Send the email and Slack message and publish the tracker site and the kit page?". One yes covers every delivery and every push. A no keeps all files in `out/` and publishes nothing.
+- **Scheduled** (the prompt says "scheduled mode"): run everything, send and publish without asking. Never ask questions in this mode; if something is missing, generate the files, do not send, and explain in the final summary.
 
 The MVP covers **only the last 7 days**, with no filters. If the user asks for another period, a specific service or regulatory mapping, say it is on the roadmap (`ROADMAP.md`) and run the weekly review.
 
@@ -39,15 +39,21 @@ Before each step, print one short status line, so a person watching the run can 
 6. **Independent review.** Launch the `radar-reviewer` subagent. It did not write the radar: it checks `out/radar.json` against `out/items.json` and writes `out/review.json`. If the verdict is `fix`, apply the suggestions and launch the reviewer once more. After that second pass, apply any remaining fixes that change a fact and move on. If subagents are not available, skip this step and say so in the summary.
 7. **Validate.** `python3 SKILL_DIR/scripts/validate_radar.py --radar out/radar.json --items out/items.json`. Fix and rerun until it passes (max 3 attempts). If it does not pass, **do not send**.
 8. **Render.** `python3 SKILL_DIR/scripts/render.py --radar out/radar.json --items out/items.json --config radar.config.json --out out`. Produces `email_subject.txt`, `email.html`, `email.txt`, `slack.json`, and a LinkedIn post: `linkedin.txt` (ready to paste, Unicode bold headings, under LinkedIn's limit) and `linkedin.html` (preview with "Copy post" and "Copy links for the first comment" buttons).
-9. **Deliver** (only where `delivery.*.enabled` is true):
+9. **Deliver** (interactive mode: after the single confirmation; only where `delivery.*.enabled` is true):
    - **Email:** the Gmail connector's `send_message` tool with `to` = `delivery.email.to`, `subject` = `out/email_subject.txt`, `htmlBody` = `out/email.html`, `body` = `out/email.txt`. No connector or no recipients: do not send, and say so.
    - **Slack:** if the environment variable in `delivery.slack.webhook_env` is set, run `python3 SKILL_DIR/scripts/send_slack.py --payload out/slack.json --config radar.config.json`. Otherwise say so.
-10. **Publish to the tracker** (only if `tracker.enabled` is true):
+10. **Publish** (after the same confirmation as step 9).
+
+    **Tracker site** (only if `tracker.enabled` is true):
     - `python3 SKILL_DIR/scripts/export_tracker.py --items out/items.json --radar out/radar.json --config radar.config.json --out out/tracker-week.json --highlights-out out/tracker-highlights.json`. It prints the ISO week, for example `w42`. Launch facts come only from `items.json`; the highlights reuse the validated radar.
     - Copy `out/tracker-week.json` to `<tracker.repo_path>/data/weeks/wNN.json` and `out/tracker-highlights.json` to `<tracker.repo_path>/data/highlights/wNN.json` (`NN` = that week, two digits). The site shows the newest highlights file in its "This week's highlights" section.
     - In `tracker.repo_path`, run `git pull --ff-only`, then `TARGET=github ./scripts/deploy.sh data/weeks/wNN.json`. It merges the week (launches already on the site are skipped), rebuilds, commits and pushes; GitHub Pages republishes in one or two minutes.
-    - Interactive mode: show how many launches will be added and **ask before pushing**. Scheduled mode: push without asking. Missing folder, failed pull or failed push: do not retry with force, and report it in the summary.
-11. **Summary** (always, in the config language): week covered, items read, the agents that ran (3 curators and the reviewer, with the review verdict), highlights and bulletins included, who it was sent to and how, launches added to the tracker site, any failures. Always end with the local files: `out/email.html` to preview, and `out/linkedin.html` (or `out/linkedin.txt`) to copy the LinkedIn post. With no connector and no recipients, these files are the whole delivery.
+    - Missing folder, failed pull or failed push: do not retry with force, and report it in the summary.
+
+    **Kit page** (only if `kit_page.enabled` is true):
+    - `python3 SKILL_DIR/scripts/update_kit_page.py --radar out/radar.json --items out/items.json --config radar.config.json --page index.html`. It rewrites only the "This week on the radar" block of `index.html`.
+    - Only on the `main` branch: `git add index.html`, `git commit -m "Kit page: radar week NN"`, `git pull --rebase` and `git push`. Never add `radar.config.json` or `out/`. On another branch, do not commit; say so in the summary.
+11. **Summary** (always, in the config language): week covered, items read, the agents that ran (3 curators and the reviewer, with the review verdict), highlights and bulletins included, who it was sent to and how, launches added to the tracker site, whether the kit page was pushed, any failures. Always end with the local files: `out/email.html` to preview, and `out/linkedin.html` (or `out/linkedin.txt`) to copy the LinkedIn post. With no connector and no recipients, these files are the whole delivery.
 
 ## `out/radar.json` format
 
